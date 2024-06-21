@@ -33,17 +33,20 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #fff; /* Белый цвет фона контейнера коэффициентов */
+    background-color: #333; /* Темно-серый фон контейнера коэффициентов */
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     overflow: hidden; /* Скрыть выход за границы для самолетика */
-    color: #1f1f1f; /* Черный цвет текста */
+    color: #fff; /* Белый цвет текста */
     font-size: 24px;
     white-space: nowrap; /* Запрет переноса текста на новую строку */
     background-image:
-            linear-gradient(45deg, transparent 50%, #1f1f1f 50%),
-            linear-gradient(-45deg, transparent 50%, #1f1f1f 50%);
-    background-size: 20px 20px; /* Размер и расстояние между полосами */
+            linear-gradient(45deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%),
+            linear-gradient(-45deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%),
+            linear-gradient(135deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%),
+            linear-gradient(-135deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%);
+    background-size: 20px 20px; /* Размер полосок */
+    background-position: 0 0, 100% 0, 0 100%, 100% 100%; /* Положение каждой полоски */
 }
 
 .coefficients-container {
@@ -55,10 +58,6 @@ body {
 
 .coefficient {
     margin: 0 10px;
-}
-
-.coefficient:first-child {
-    font-size: 20px; /* Уменьшаем размер первого коэффициента */
 }
 
 .airplane {
