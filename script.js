@@ -23,9 +23,10 @@ function updateData() {
 }
 
 function updateCoefficients() {
+    loadingFinished = true;
+    loaderBar.style.animation = 'none'; // Отключаем анимацию загрузки
     setTimeout(() => {
-        loadingFinished = true;
-        loaderBar.style.animation = 'none'; // Отключаем анимацию загрузки
+        loaderBar.style.animation = 'loadAnimation 60s linear infinite'; // Включаем анимацию загрузки
         updateData(); // Обновляем коэффициенты после завершения загрузки
     }, 25000); // Загрузка длится 25 секунд
 }
@@ -39,17 +40,12 @@ loaderBar.addEventListener('animationend', () => {
 getSignalButton.addEventListener('click', () => {
     if (loadingFinished) {
         loadingFinished = false;
-        loaderBar.style.animation = 'loadAnimation 25s linear infinite'; // Включаем анимацию загрузки
+        loaderBar.style.animation = 'loadAnimation 25s linear'; // Включаем анимацию загрузки
         setTimeout(() => {
             updateCoefficients(); // Запускаем обновление коэффициентов после 25 секунд загрузки
         }, 25000);
     }
 });
-
-// Обновляем данные каждые 5 секунд
-setInterval(() => {
-    updateData();
-}, 5000);
 
 // Инициализация данных при загрузке страницы
 updateData();
