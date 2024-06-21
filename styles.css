@@ -1,13 +1,13 @@
+/* Общие стили для body и контейнера */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    background-color: #1a1a1a; /* Темно-серый фон */
-    overflow-x: hidden; /* Предотвращаем появление горизонтальной полосы прокрутки */
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     height: 100vh;
+    overflow: hidden;
+    background-color: #1a1a1a; /* Темно-серый фон */
 }
 
 .container {
@@ -21,16 +21,19 @@ body {
     margin-top: 20px; /* Отступ сверху */
 }
 
+/* Стили для контейнера с коэффициентами */
 .coefficients-container {
     width: 120px; /* Ширина контейнера коэффициентов */
     height: 120px; /* Высота контейнера коэффициентов */
-    background: repeating-linear-gradient(90deg, #555, #555 5px, #222 5px, #222 10px); /* Полосатый темно-серый фон */
+    background: linear-gradient(90deg, #555 10%, #222 10%); /* Полосатый темно-серый фон */
     border-radius: 8px;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: auto; /* Центрируем по горизонтали */
     margin-bottom: 20px; /* Отступ снизу */
+    position: relative;
+    overflow: hidden; /* Скрытие частей полосок, выходящих за границы */
 }
 
 #coefficientsContainer {
@@ -38,41 +41,86 @@ body {
     color: #fff; /* Белый цвет текста коэффициентов */
 }
 
-.loader-container {
+#stripesContainer {
+    position: absolute;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    margin-bottom: 20px; /* Отступ снизу */
-}
-
-.loader {
-    width: 100%;
-    height: 10px;
-    background-color: rgba(255, 0, 0, 0.2); /* Красный полупрозрачный фон полосы загрузки */
-    border-radius: 5px;
-    overflow: hidden; /* Предотвращаем выход за границы */
-}
-
-.loader-bar {
-    width: calc(100% - 20px); /* Начальная ширина полосы загрузки минус отступы */
     height: 100%;
-    background-color: #ff0000; /* Красный цвет полосы загрузки */
-    animation: loaderAnimation 10s linear infinite; /* Анимация полосы загрузки */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    animation: moveStripes 5s linear infinite; /* Анимация движения полосок */
 }
 
-@keyframes loaderAnimation {
+.stripe {
+    width: 5px;
+    height: 100%;
+    background-color: #fff; /* Белый цвет полосок */
+}
+
+@keyframes moveStripes {
     0% {
-        width: 0%; /* Начальная ширина полосы загрузки */
+        transform: translateX(-100%);
     }
     100% {
-        width: 100%; /* Конечная ширина полосы загрузки */
+        transform: translateX(0%);
     }
+}
+
+.plane {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    background-image: url('https://img.freepik.com/free-vector/isolated-rocket-transparent_1308-49950.jpg');
+    background-size: cover;
+    animation: movePlane 8s linear infinite; /* Анимация движения самолета */
+}
+
+@keyframes movePlane {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, calc(100vh + 50px)) rotate(360deg);
+    }
+}
+
+/* Стили для информационного контейнера (время и шанс) */
+.info-container {
+    margin-bottom: 20px; /* Отступ снизу */
 }
 
 #timeContainer,
 #chanceContainer {
     font-size: 18px;
     color: #888; /* Серый цвет текста времени и шанса */
+}
+
+/* Стили для анимированного ползунка загрузки */
+.loader {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.loader-bar {
+    width: 0%; /* Начальная ширина полосы загрузки */
+    height: 10px;
+    background-color: rgba(255, 0, 0, 0.2); /* Красный полупрозрачный фон полосы загрузки */
+    border-radius: 5px;
+    overflow: hidden; /* Предотвращаем выход за границы */
+    animation: loaderAnimation 10s linear infinite; /* Анимация полосы загрузки */
+}
+
+@keyframes loaderAnimation {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
 }
