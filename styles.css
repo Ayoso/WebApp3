@@ -24,24 +24,6 @@ body {
     position: relative;
 }
 
-.airplane-container {
-    position: relative;
-    display: inline-block;
-}
-
-.background-plane {
-    position: absolute;
-    top: -50px; /* Начальное положение над верхней границей экрана */
-    left: 50%; /* Центрируем по горизонтали */
-    transform: translateX(-50%); /* Центрируем по горизонтали */
-    animation: airplaneAnimation 20s linear infinite; /* Анимация полета самолетика */
-    z-index: 1; /* Отображаем самолет над фоном */
-}
-
-.airplane img {
-    width: 50px; /* Размер изображения самолетика */
-}
-
 .coefficients-container {
     background-color: #333; /* Темно-серый фон контейнера коэффициентов */
     padding: 20px; /* Увеличим отступы для контейнера коэффициентов */
@@ -52,8 +34,6 @@ body {
     white-space: nowrap; /* Запрет переноса текста на новую строку */
     width: 70%; /* Ширина контейнера коэффициентов */
     margin: 0 auto; /* Центрируем контейнер по горизонтали */
-    position: relative; /* Добавим относительное позиционирование для позиционирования самолета */
-    z-index: 2; /* Отображаем коэффициенты над самолетом */
 }
 
 .loader {

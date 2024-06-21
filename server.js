@@ -17,7 +17,7 @@ app.post('/get-coefficients', (req, res) => {
         currentCoefficients = generateRandomCoefficients();
 
         // Отправляем коэффициенты обратно в виде JSON
-        res.json({ coefficient1: currentCoefficients[0], coefficient2: currentCoefficients[1] });
+        res.json({ coefficient1: parseFloat(currentCoefficients[0]), coefficient2: parseFloat(currentCoefficients[1]) });
     } catch (error) {
         console.error('Ошибка при генерации коэффициентов:', error);
         res.status(500).json({ error: 'Ошибка при генерации коэффициентов' });
