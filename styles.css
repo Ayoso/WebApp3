@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0; /* Светло-серый цвет фона */
+    background-color: #f0f0f0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,44 +11,22 @@ body {
 .container {
     text-align: center;
     padding: 20px;
-    background-color: dimgray; /* Белый фон контейнера */
+    background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
-    color: #333; /* Темно-серый цвет для заголовков */
-}
-
-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #007bff; /* Синий цвет для кнопок */
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    margin-top: 20px;
-    border-radius: 4px;
-}
-
-button:hover {
-    background-color: #0056b3; /* Темно-синий при наведении */
+    color: #333;
 }
 
 #coefficientsContainer {
     margin-top: 20px;
+    font-size: 24px;
+}
+
+#timeContainer,
+#chanceContainer {
+    margin-top: 10px;
     font-size: 18px;
-}
-
-/* Турецкий узор для фона */
-body {
-    background-image: url('https://kartinki.pics/uploads/posts/2022-12/thumbs/1670444453_5-kartinkin-net-p-turetskii-ornament-kartinki-vkontakte-5.png'); /* Замените на путь к вашему изображению турецкого узора */
-    background-size: cover;
-}
-
-/* Узбекский орнамент для контейнера */
-.container {
-
-    background-size: cover;
-    background-position: center;
 }

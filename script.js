@@ -1,18 +1,22 @@
 const webAppUrl = 'https://legendary-bombolone-18e5fd.netlify.app'; // Замените на ваш URL
 
-const getSignalButton = document.getElementById('getSignalButton');
 const coefficientsContainer = document.getElementById('coefficientsContainer');
+const timeContainer = document.getElementById('timeContainer');
+const chanceContainer = document.getElementById('chanceContainer');
 
-getSignalButton.addEventListener('click', async () => {
-    try {
-        const response = await fetch(`${webAppUrl}/coefficients`);
-        if (!response.ok) {
-            throw new Error('Ошибка получения данных');
-        }
-        const data = await response.json();
-        coefficientsContainer.textContent = `Коэффициенты: ${data.coefficient1}, ${data.coefficient2}`;
-    } catch (error) {
-        console.error('Ошибка:', error);
-        coefficientsContainer.textContent = 'Ошибка получения коэффициентов';
-    }
-});
+function updateData() {
+    const coefficient1 = (Math.random() * 4.5 + 2).toFixed(2);
+    const coefficient2 = (Math.random() * 4.5 + 2).toFixed(2);
+    const time = new Date().toLocaleTimeString();
+    const chance = `${Math.floor(Math.random() * 21) + 70}%`;
+
+    coefficientsContainer.textContent = `Коэффициенты: ${coefficient1}X - ${coefficient2}X`;
+    timeContainer.textContent = `Time: ${time}`;
+    chanceContainer.textContent = `Chance: ${chance}`;
+}
+
+// Обновляем данные каждые 5 секунд
+setInterval(updateData, 5000);
+
+// Инициализация данных при загрузке страницы
+updateData();
