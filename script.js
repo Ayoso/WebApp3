@@ -1,5 +1,6 @@
 const webAppUrl = 'https://legendary-bombolone-18e5fd.netlify.app'; // Замените на ваш URL
 
+// Получаем элементы DOM
 const coefficientsContainer = document.getElementById('coefficientsContainer');
 const timeContainer = document.getElementById('timeContainer');
 const chanceContainer = document.getElementById('chanceContainer');
@@ -8,6 +9,7 @@ const getSignalButton = document.querySelector('.get-signal-button');
 
 let loadingFinished = false; // Флаг для отслеживания завершения загрузки
 
+// Функция для обновления данных коэффициентов
 function updateData(coefficients) {
     if (coefficients) {
         const coefficient1 = coefficients.coefficient1.toFixed(2);
@@ -30,8 +32,9 @@ function updateData(coefficients) {
     }
 }
 
+// Функция для получения коэффициентов с сервера
 function fetchCoefficients() {
-    fetch('http://localhost:3000/get-coefficients', {
+    fetch(`${webAppUrl}/get-coefficients`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -54,13 +57,13 @@ function fetchCoefficients() {
             console.error('Ошибка при получении коэффициентов:', error);
         });
 }
+
 // Функция для генерации случайных коэффициентов
 function generateRandomCoefficients() {
     const coefficient1 = (Math.random() * 5 + 1).toFixed(2); // Генерируем случайное число от 1 до 6 с двумя знаками после запятой
     const coefficient2 = (coefficient1 * (Math.floor(Math.random() * 3) + 2)).toFixed(2); // Второй коэффициент в два или больше раза больше первого
-    return [coefficient1, coefficient2];
+    return { coefficient1: parseFloat(coefficient1), coefficient2: parseFloat(coefficient2) };
 }
-
 
 // Обработчик для кнопки "GET SIGNAL"
 getSignalButton.addEventListener('click', () => {
