@@ -27,12 +27,14 @@ body {
 .coefficients-container {
     display: inline-block;
     background-color: #333; /* Темно-серый фон контейнера коэффициентов */
-    padding: 10px;
+    padding: 20px; /* Увеличим отступы для контейнера коэффициентов */
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     color: #fff; /* Белый цвет текста */
     font-size: 24px;
     white-space: nowrap; /* Запрет переноса текста на новую строку */
+    width: 70%; /* Ширина контейнера коэффициентов */
+    margin: 0 auto; /* Центрируем контейнер по горизонтали */
 }
 
 .loader {
@@ -64,4 +66,26 @@ body {
     color: #ccc; /* Серый цвет для времени и шанса */
     font-size: 18px;
     margin-top: 10px; /* Отступ сверху */
+}
+
+/* Стили для самолетика */
+.airplane {
+    position: absolute;
+    top: -50px; /* Начальное положение над верхней границей экрана */
+    left: 50%; /* Центрируем по горизонтали */
+    transform: translateX(-50%); /* Центрируем по горизонтали */
+    animation: airplaneAnimation 20s linear infinite; /* Анимация полета самолетика */
+    z-index: 1; /* Отображаем самолет над фоном */
+}
+
+@keyframes airplaneAnimation {
+    0% {
+        transform: translateX(-50%) translateY(0);
+    }
+    50% {
+        transform: translateX(-50%) translateY(-50px);
+    }
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
 }
