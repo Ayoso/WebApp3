@@ -1,4 +1,4 @@
-const webAppUrl = 'https://новый-url-вашего-web-приложения'; // Замените на ваш URL
+const webAppUrl = 'https://legendary-bombolone-18e5fd.netlify.app'; // Замените на ваш URL
 
 const getSignalButton = document.getElementById('getSignalButton');
 const coefficientsContainer = document.getElementById('coefficientsContainer');
