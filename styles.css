@@ -23,11 +23,6 @@ body {
     padding: 20px;
     position: relative;
 }
-.coefficient {
-    display: inline-block;
-    margin: 0 5px; /* Отступы между коэффициентами */
-    color: white;
-}
 
 .coefficients-container {
     display: inline-block;
@@ -105,4 +100,9 @@ body {
 .get-signal-button:disabled {
     background-color: #ccc; /* Серый цвет для отключенной кнопки */
     cursor: not-allowed; /* Курсор "не доступен" для отключенной кнопки */
+}
+
+.coefficient {
+    display: inline-block;
+    margin: 0 5px; /* Отступы между коэффициентами */
 }
