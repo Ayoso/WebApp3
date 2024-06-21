@@ -5,19 +5,28 @@ const timeContainer = document.getElementById('timeContainer');
 const chanceContainer = document.getElementById('chanceContainer');
 const loaderBar = document.querySelector('.loader-bar');
 
-function updateData() {
-    const coefficient1 = (Math.random() * 4.5 + 2).toFixed(2);
-    const coefficient2 = (Math.random() * 4.5 + 2).toFixed(2);
-    const time = new Date().toLocaleTimeString();
-    const chance = `${Math.floor(Math.random() * 21) + 70}%`;
+let loadingFinished = false; // Флаг для отслеживания завершения загрузки
 
-    coefficientsContainer.textContent = `${coefficient1}X - ${coefficient2}X`;
-    timeContainer.textContent = `Time: ${time}`;
-    chanceContainer.textContent = `Chance: ${chance}`;
+function updateData() {
+    if (loadingFinished) {
+        const coefficient1 = (Math.random() * 4.5 + 2).toFixed(2);
+        const coefficient2 = coefficient1 * (Math.floor(Math.random() * 3) + 2); // Второй коэффициент в возврастающей прогрессии
+
+        const time = new Date().toLocaleTimeString();
+        const chance = `${Math.floor(Math.random() * 21) + 70}%`;
+
+        coefficientsContainer.textContent = `${coefficient1}X - ${coefficient2}X`;
+        timeContainer.textContent = `Time: ${time}`;
+        chanceContainer.textContent = `Chance: ${chance}`;
+    }
 }
 
 function updateCoefficients() {
-    setTimeout(updateData, 60000); // Ждем 60 секунд перед обновлением коэффициентов
+    setTimeout(() => {
+        loadingFinished = true;
+        loaderBar.style.animation = 'none'; // Отключаем анимацию загрузки
+        updateData(); // Обновляем коэффициенты после завершения загрузки
+    }, 25000); // Загрузка длится 25 секунд
 }
 
 // Отслеживаем завершение анимации загрузки
@@ -28,3 +37,13 @@ setInterval(updateData, 5000);
 
 // Инициализация данных при загрузке страницы
 updateData();
+
+// Обработчик для кнопки "GET SIGNAL"
+const getSignalButton = document.getElementById('getSignalButton');
+getSignalButton.addEventListener('click', () => {
+    if (loadingFinished) {
+        loadingFinished = false;
+        loaderBar.style.animation = 'loadAnimation 25s linear infinite'; // Включаем анимацию загрузки
+        setTimeout(updateCoefficients, 25000); // Запускаем обновление коэффициентов после 25 секунд загрузки
+    }
+});
