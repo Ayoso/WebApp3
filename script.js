@@ -30,10 +30,14 @@ function updateCoefficients() {
 }
 
 // Отслеживаем завершение анимации загрузки
-loaderBar.addEventListener('animationend', updateCoefficients);
+loaderBar.addEventListener('animationend', () => {
+    updateCoefficients();
+});
 
 // Обновляем данные каждые 5 секунд
-setInterval(updateData, 5000);
+setInterval(() => {
+    updateData();
+}, 5000);
 
 // Инициализация данных при загрузке страницы
 updateData();
@@ -44,6 +48,8 @@ getSignalButton.addEventListener('click', () => {
     if (loadingFinished) {
         loadingFinished = false;
         loaderBar.style.animation = 'loadAnimation 25s linear infinite'; // Включаем анимацию загрузки
-        setTimeout(updateCoefficients, 25000); // Запускаем обновление коэффициентов после 25 секунд загрузки
+        setTimeout(() => {
+            updateCoefficients(); // Запускаем обновление коэффициентов после 25 секунд загрузки
+        }, 25000);
     }
 });
