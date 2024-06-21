@@ -8,10 +8,19 @@ body {
     margin: 0;
 }
 
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://kartinki.pics/uploads/posts/2022-12/thumbs/1670444453_5-kartinkin-net-p-turetskii-ornament-kartinki-vkontakte-5.png'); /* Путь к изображению с турецкими орнаментами */
+    background-repeat: repeat; /* Повторять фон по горизонтали и вертикали */
+}
+
 .container {
     text-align: center;
     padding: 20px;
-    background-color: transparent; /* Прозрачный фон контейнера */
     position: relative;
 }
 
@@ -63,11 +72,14 @@ body {
 }
 
 /* Стили для анимированного самолетика */
-.plane {
+.rocket {
     position: absolute;
     top: 20px; /* Положение самолетика от верхнего края контейнера */
     left: -50px; /* Начальное положение за пределами экрана слева */
     width: 50px; /* Ширина самолетика */
+    height: 50px; /* Высота самолетика */
+    background-image: url('https://img.freepik.com/premium-psd/cartoon-rocket-isolated-transparent-background-png-psd_888962-1544.jpg'); /* Ссылка на изображение самолетика */
+    background-size: contain; /* Масштабирование изображения */
     animation: rocketAnimation 10s linear infinite; /* Анимация полета самолетика */
 }
 
