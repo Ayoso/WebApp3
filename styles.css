@@ -1,3 +1,4 @@
+/* Общие стили */
 body {
     font-family: Arial, sans-serif;
     background-color: #1f1f1f; /* Темно-серый фон */
@@ -24,6 +25,7 @@ body {
     position: relative;
 }
 
+/* Стили для коэффициентов */
 .coefficients-wrapper {
     position: relative;
     width: 100%; /* Увеличиваем ширину контейнера коэффициентов */
@@ -41,12 +43,9 @@ body {
     font-size: 24px;
     white-space: nowrap; /* Запрет переноса текста на новую строку */
     background-image:
-            linear-gradient(45deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%),
-            linear-gradient(-45deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%),
-            linear-gradient(135deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%),
-            linear-gradient(-135deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%);
-    background-size: 20px 20px; /* Размер полосок */
-    background-position: 0 0, 100% 0, 0 100%, 100% 100%; /* Положение каждой полоски */
+            linear-gradient(45deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+            linear-gradient(-45deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px; /* Размер и угол полосок */
 }
 
 .coefficients-container {
@@ -60,12 +59,13 @@ body {
     margin: 0 10px;
 }
 
+/* Анимация для самолетика */
 .airplane {
     position: absolute;
     bottom: 0; /* Начальное положение самолетика внизу контейнера */
-    left: 50%; /* Центрируем по горизонтали */
-    transform: translateX(-50%) translateY(0); /* Центрируем по горизонтали */
-    animation: airplaneAnimation 20s linear infinite; /* Анимация полета самолетика */
+    left: 0; /* Начальное положение самолетика слева контейнера */
+    transform: translateX(100%) translateY(-100%); /* Смещение самолетика вправо и вверх */
+    animation: airplaneAnimation 5s linear infinite; /* Анимация полета самолетика */
     z-index: 1; /* Отображаем самолет над фоном */
 }
 
@@ -73,6 +73,7 @@ body {
     width: 50px; /* Размер изображения самолетика */
 }
 
+/* Анимация загрузки */
 .loader {
     width: 100%;
     height: 8px; /* Высота полосы загрузки */
@@ -98,12 +99,14 @@ body {
     }
 }
 
+/* Стили для информационного блока */
 .info-container {
     color: #ccc; /* Серый цвет для времени и шанса */
     font-size: 18px;
     margin-top: 10px; /* Отступ сверху */
 }
 
+/* Стили для кнопки */
 .get-signal-button {
     background-color: #4CAF50; /* Зеленый цвет фона */
     color: #fff; /* Белый цвет текста */
@@ -124,14 +127,12 @@ body {
     cursor: not-allowed; /* Курсор "не доступен" для отключенной кнопки */
 }
 
+/* Анимация полета самолетика */
 @keyframes airplaneAnimation {
     0% {
-        transform: translateX(-50%) translateY(0);
-    }
-    50% {
-        transform: translateX(-50%) translateY(-50%);
+        transform: translateX(0%) translateY(0%);
     }
     100% {
-        transform: translateX(-50%) translateY(0);
+        transform: translateX(100%) translateY(-100%);
     }
 }
