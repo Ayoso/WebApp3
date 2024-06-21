@@ -26,10 +26,10 @@ body {
 
 .coefficients-wrapper {
     position: relative;
-    width: 80%; /* Увеличиваем ширину контейнера коэффициентов */
+    width: 100%; /* Увеличиваем ширину контейнера коэффициентов */
     max-width: 600px; /* Максимальная ширина для адаптивности */
     margin: 0 auto; /* Центрируем по горизонтали */
-    height: 300px; /* Задаем высоту контейнера коэффициентов */
+    height: 200px; /* Задаем высоту контейнера коэффициентов */
     display: flex;
     justify-content: center;
     align-items: center;
