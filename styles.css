@@ -26,19 +26,27 @@ body {
 
 .coefficients-wrapper {
     position: relative;
-    width: 70%;
-    margin: 0 auto;
-}
-
-.coefficients-container {
+    width: 80%; /* Увеличиваем ширину контейнера коэффициентов */
+    max-width: 600px; /* Максимальная ширина для адаптивности */
+    margin: 0 auto; /* Центрируем по горизонтали */
+    height: 300px; /* Задаем высоту контейнера коэффициентов */
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #333; /* Темно-серый фон контейнера коэффициентов */
-    padding: 20px; /* Увеличим отступы для контейнера коэффициентов */
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden; /* Скрыть выход за границы для самолетика */
     color: #fff; /* Белый цвет текста */
     font-size: 24px;
     white-space: nowrap; /* Запрет переноса текста на новую строку */
-    position: relative;
+}
+
+.coefficients-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .airplane {
@@ -112,7 +120,7 @@ body {
     50% {
         transform: translateX(-50%) translateY(-25px);
     }
-    100% {
+    100% {s
         transform: translateX(-50%) translateY(0);
     }
 }
