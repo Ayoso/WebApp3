@@ -83,7 +83,7 @@ body {
 }
 
 .get-signal-button {
-    background-color: #4CAF50; /* Зеленый цвет фона */
+    background-color: red; /* Зеленый цвет фона */
     color: #fff; /* Белый цвет текста */
     border: none;
     padding: 10px 20px;
