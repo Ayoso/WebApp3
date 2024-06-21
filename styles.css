@@ -6,6 +6,8 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+    background-image: url('https://kartinki.pics/uploads/posts/2022-12/thumbs/1670444453_5-kartinkin-net-p-turetskii-ornament-kartinki-vkontakte-5.png'); /* Путь к изображению с турецкими орнаментами */
+    background-repeat: repeat; /* Повторять фон по горизонтали и вертикали */
 }
 
 .container {
@@ -29,4 +31,38 @@ h1 {
 #chanceContainer {
     margin-top: 10px;
     font-size: 18px;
+}
+/* Добавляем стили для ракет */
+.rocket {
+    position: absolute;
+    top: -50px; /* Начальное положение над верхней границей экрана */
+    left: calc(50% - 25px); /* Центрируем ракету по горизонтали */
+    width: 50px; /* Ширина ракеты */
+    animation: rocketAnimation 8s linear infinite; /* Применяем анимацию */
+}
+
+@keyframes rocketAnimation {
+    0% {
+        transform: translateY(0) rotate(0deg); /* Начальное положение и поворот ракеты */
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg); /* Конечное положение и поворот ракеты */
+    }
+}
+
+.rocket2 {
+    position: absolute;
+    top: -50px; /* Начальное положение над верхней границей экрана */
+    left: calc(75% - 25px); /* Центрируем вторую ракету по горизонтали */
+    width: 50px; /* Ширина второй ракеты */
+    animation: rocketAnimation2 10s linear infinite; /* Применяем анимацию для второй ракеты */
+}
+
+@keyframes rocketAnimation2 {
+    0% {
+        transform: translateY(0) rotate(0deg); /* Начальное положение и поворот второй ракеты */
+    }
+    100% {
+        transform: translateY(100vh) rotate(-360deg); /* Конечное положение и поворот второй ракеты */
+    }
 }
