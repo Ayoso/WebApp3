@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: #f0f0f0; /* Светло-серый цвет фона */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,19 +11,19 @@ body {
 .container {
     text-align: center;
     padding: 20px;
-    background-color: #fff;
+    background-color: #fff; /* Белый фон контейнера */
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
-    color: #333;
+    color: #333; /* Темно-серый цвет для заголовков */
 }
 
 button {
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #007bff;
+    background-color: #007bff; /* Синий цвет для кнопок */
     color: #fff;
     border: none;
     cursor: pointer;
@@ -32,10 +32,23 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #0056b3; /* Темно-синий при наведении */
 }
 
 #coefficientsContainer {
     margin-top: 20px;
     font-size: 18px;
+}
+
+/* Турецкий узор для фона */
+body {
+    background-image: url('https://png.pngtree.com/png-clipart/20210309/original/pngtree-luxury-mandala-decorative-ethnic-element-background-ornament-png-image_5888926.png'); /* Замените на путь к вашему изображению турецкого узора */
+    background-size: cover;
+}
+
+/* Узбекский орнамент для контейнера */
+.container {
+    background-image: url('https://png.klev.club/uploads/posts/2024-05/png-klev-club-udbj-p-uzbekskii-ornament-png-11.png'); /* Замените на путь к вашему изображению узбекского орнамента */
+    background-size: cover;
+    background-position: center;
 }
