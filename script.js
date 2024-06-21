@@ -10,7 +10,7 @@ function updateData() {
     const time = new Date().toLocaleTimeString();
     const chance = `${Math.floor(Math.random() * 21) + 70}%`;
 
-    coefficientsContainer.textContent = `Коэффициенты: ${coefficient1}X - ${coefficient2}X`;
+    coefficientsContainer.textContent = `ihtimaller/imkoniyatlar: ${coefficient1}X - ${coefficient2}X`;
     timeContainer.textContent = `Time: ${time}`;
     chanceContainer.textContent = `Chance: ${chance}`;
 }
