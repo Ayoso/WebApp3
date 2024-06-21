@@ -1,6 +1,6 @@
 const webAppUrl = 'https://legendary-bombolone-18e5fd.netlify.app'; // Замените на ваш URL
 
-const coefficientsContainer = document.querySelector('.coefficients-container');
+const coefficientsContainer = document.getElementById('coefficientsContainer');
 const timeContainer = document.getElementById('timeContainer');
 const chanceContainer = document.getElementById('chanceContainer');
 const loaderBar = document.querySelector('.loader-bar');
@@ -13,17 +13,17 @@ function updateData() {
         const coefficient1 = (Math.random() * 4.5 + 2).toFixed(2);
         const coefficient2 = coefficient1 * (Math.floor(Math.random() * 3) + 2); // Второй коэффициент в возврастающей прогрессии
 
-        const time = new Date().toLocaleTimeString();
-        const chance = `${Math.floor(Math.random() * 21) + 70}%`;
-
         // Создаем HTML для коэффициентов
         const coefficientsHTML = `
             <div class="coefficient">${coefficient1}X</div>
-            <div class="coefficient"> - ${coefficient2}X</div>
+            <div class="coefficient"> - ${coefficient2.toFixed(2)}X</div>
         `;
 
         // Вставляем HTML в coefficientsContainer
         coefficientsContainer.innerHTML = coefficientsHTML;
+
+        const time = new Date().toLocaleTimeString();
+        const chance = `${Math.floor(Math.random() * 21) + 70}%`;
 
         timeContainer.textContent = `Time: ${time}`;
         chanceContainer.textContent = `Chance: ${chance}`;
