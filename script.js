@@ -16,7 +16,22 @@ function updateData() {
         const time = new Date().toLocaleTimeString();
         const chance = `${Math.floor(Math.random() * 21) + 70}%`;
 
-        coefficientsContainer.textContent = `${coefficient1}X - ${coefficient2}X`;
+        // Создаем элементы для вывода коэффициентов
+        const coefficientElement1 = document.createElement('div');
+        coefficientElement1.textContent = `${coefficient1}X`;
+        coefficientElement1.classList.add('coefficient');
+
+        const coefficientElement2 = document.createElement('div');
+        coefficientElement2.textContent = ` - ${coefficient2}X`;
+        coefficientElement2.classList.add('coefficient');
+
+        // Очищаем содержимое контейнера перед добавлением новых коэффициентов
+        coefficientsContainer.innerHTML = '';
+
+        // Добавляем коэффициенты в контейнер
+        coefficientsContainer.appendChild(coefficientElement1);
+        coefficientsContainer.appendChild(coefficientElement2);
+
         timeContainer.textContent = `Time: ${time}`;
         chanceContainer.textContent = `Chance: ${chance}`;
     }

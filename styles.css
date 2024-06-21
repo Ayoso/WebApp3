@@ -23,6 +23,10 @@ body {
     padding: 20px;
     position: relative;
 }
+.coefficient {
+    display: inline-block;
+    margin: 0 5px; /* Отступы между коэффициентами */
+}
 
 .coefficients-container {
     display: inline-block;
