@@ -1,9 +1,8 @@
-const webAppUrl = 'https://legendary-bombolone-18e5fd.netlify.app'; // Замените на ваш URL
-
 const coefficientsContainer = document.getElementById('coefficientsContainer');
 const timeContainer = document.getElementById('timeContainer');
 const chanceContainer = document.getElementById('chanceContainer');
 const loaderBar = document.querySelector('.loader-bar');
+const getSignalButton = document.querySelector('.get-signal-button');
 
 let loadingFinished = false; // Флаг для отслеживания завершения загрузки
 
@@ -34,16 +33,7 @@ loaderBar.addEventListener('animationend', () => {
     updateCoefficients();
 });
 
-// Обновляем данные каждые 5 секунд
-setInterval(() => {
-    updateData();
-}, 5000);
-
-// Инициализация данных при загрузке страницы
-updateData();
-
 // Обработчик для кнопки "GET SIGNAL"
-const getSignalButton = document.getElementById('getSignalButton');
 getSignalButton.addEventListener('click', () => {
     if (loadingFinished) {
         loadingFinished = false;
@@ -53,3 +43,11 @@ getSignalButton.addEventListener('click', () => {
         }, 25000);
     }
 });
+
+// Обновляем данные каждые 5 секунд
+setInterval(() => {
+    updateData();
+}, 5000);
+
+// Инициализация данных при загрузке страницы
+updateData();
