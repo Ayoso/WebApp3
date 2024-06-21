@@ -81,6 +81,7 @@ body {
 .airplane img {
     width: 50px; /* Размер изображения самолетика */
 }
+
 .get-signal-button {
     background-color: #4CAF50; /* Зеленый цвет фона */
     color: #fff; /* Белый цвет текста */
@@ -96,14 +97,7 @@ body {
     background-color: #45a049; /* Темнее зеленый при наведении */
 }
 
-@keyframes airplaneAnimation {
-    0% {
-        transform: translateX(-50%) translateY(0);
-    }
-    50% {
-        transform: translateX(-50%) translateY(-50px);
-    }
-    100% {
-        transform: translateX(-50%) translateY(0);
-    }
+.get-signal-button:disabled {
+    background-color: #ccc; /* Серый цвет для отключенной кнопки */
+    cursor: not-allowed; /* Курсор "не доступен" для отключенной кнопки */
 }
