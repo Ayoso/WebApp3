@@ -14,7 +14,7 @@ body {
     position: relative;
     text-align: center;
     padding: 20px;
-    background-color: rgba(255, 255, 255, 0.8); /* Полупрозрачный белый фон */
+    background-color: rgba(0, 0, 0, 0.8); /* Полупрозрачный темно-серый фон */
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     max-width: 600px; /* Максимальная ширина контейнера */
@@ -24,12 +24,13 @@ body {
 .coefficients-container {
     width: 120px; /* Ширина контейнера коэффициентов */
     height: 120px; /* Высота контейнера коэффициентов */
-    background: linear-gradient(to right, #111 50%, #ddd 50%); /* Полосатый фон */
+    background: repeating-linear-gradient(90deg, #555, #555 5px, #222 5px, #222 10px); /* Полосатый темно-серый фон */
     border-radius: 8px;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: auto; /* Центрируем по горизонтали */
+    margin-bottom: 20px; /* Отступ снизу */
 }
 
 #coefficientsContainer {
@@ -37,17 +38,13 @@ body {
     color: #fff; /* Белый цвет текста коэффициентов */
 }
 
-.info-container {
-    margin-top: 20px;
-}
-
 .loader-container {
     width: 100%;
-    margin-top: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
+    margin-bottom: 20px; /* Отступ снизу */
 }
 
 .loader {
@@ -65,7 +62,6 @@ body {
     animation: loaderAnimation 10s linear infinite; /* Анимация полосы загрузки */
 }
 
-
 @keyframes loaderAnimation {
     0% {
         width: 0%; /* Начальная ширина полосы загрузки */
@@ -73,4 +69,10 @@ body {
     100% {
         width: 100%; /* Конечная ширина полосы загрузки */
     }
+}
+
+#timeContainer,
+#chanceContainer {
+    font-size: 18px;
+    color: #888; /* Серый цвет текста времени и шанса */
 }
