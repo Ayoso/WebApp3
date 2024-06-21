@@ -64,8 +64,8 @@ body {
     position: absolute;
     bottom: 0; /* Начальное положение самолетика внизу контейнера */
     left: 0; /* Начальное положение самолетика слева контейнера */
-    transform: translateX(100%) translateY(-100%); /* Смещение самолетика вправо и вверх */
-    animation: airplaneAnimation 5s linear infinite; /* Анимация полета самолетика */
+    transform: translateX(0) translateY(100%); /* Смещение самолетика вниз */
+    animation: airplaneAnimation 10s linear infinite; /* Анимация полета самолетика */
     z-index: 1; /* Отображаем самолет над фоном */
 }
 
@@ -130,7 +130,7 @@ body {
 /* Анимация полета самолетика */
 @keyframes airplaneAnimation {
     0% {
-        transform: translateX(0%) translateY(0%);
+        transform: translateX(0) translateY(100%);
     }
     100% {
         transform: translateX(100%) translateY(-100%);
