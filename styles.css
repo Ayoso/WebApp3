@@ -6,6 +6,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+    position: relative;
 }
 
 .background {
@@ -14,8 +15,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('https://kartinki.pics/uploads/posts/2022-12/thumbs/1670444453_5-kartinkin-net-p-turetskii-ornament-kartinki-vkontakte-5.png'); /* Путь к изображению с турецкими орнаментами */
-    background-repeat: repeat; /* Повторять фон по горизонтали и вертикали */
+    background-color: #1f1f1f; /* Темно-серый фон */
 }
 
 .container {
@@ -25,34 +25,23 @@ body {
 }
 
 .coefficients-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #2d2d2d; /* Темно-серый фон контейнера коэффициентов */
+    display: inline-block;
+    background-color: #333; /* Темно-серый фон контейнера коэффициентов */
     padding: 10px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    margin-bottom: 20px; /* Отступ снизу */
-}
-
-.coefficients-container #coefficientsContainer {
-    font-size: 24px;
     color: #fff; /* Белый цвет текста */
+    font-size: 24px;
     white-space: nowrap; /* Запрет переноса текста на новую строку */
 }
 
-.info-container {
-    color: #ccc; /* Серый цвет для времени и шанса */
-    font-size: 18px;
-}
-
 .loader {
-    position: relative;
+    width: 100%;
     height: 8px; /* Высота полосы загрузки */
     background-color: #444; /* Цвет фона полосы загрузки */
     border-radius: 4px;
     overflow: hidden;
-    margin-bottom: 10px; /* Отступ снизу */
+    margin-top: 10px; /* Отступ сверху */
 }
 
 .loader-bar {
@@ -71,23 +60,8 @@ body {
     }
 }
 
-/* Стили для анимированного самолетика */
-.rocket {
-    position: absolute;
-    top: 20px; /* Положение самолетика от верхнего края контейнера */
-    left: -50px; /* Начальное положение за пределами экрана слева */
-    width: 50px; /* Ширина самолетика */
-    height: 50px; /* Высота самолетика */
-    background-image: url('https://img.freepik.com/premium-psd/cartoon-rocket-isolated-transparent-background-png-psd_888962-1544.jpg'); /* Ссылка на изображение самолетика */
-    background-size: contain; /* Масштабирование изображения */
-    animation: rocketAnimation 10s linear infinite; /* Анимация полета самолетика */
-}
-
-@keyframes rocketAnimation {
-    0% {
-        transform: translateX(-100%);
-    }
-    100% {
-        transform: translateX(100%);
-    }
+.info-container {
+    color: #ccc; /* Серый цвет для времени и шанса */
+    font-size: 18px;
+    margin-top: 10px; /* Отступ сверху */
 }
