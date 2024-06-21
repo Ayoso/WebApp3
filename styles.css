@@ -24,8 +24,25 @@ body {
     position: relative;
 }
 
-.coefficients-container {
+.airplane-container {
+    position: relative;
     display: inline-block;
+}
+
+.background-plane {
+    position: absolute;
+    top: -50px; /* Начальное положение над верхней границей экрана */
+    left: 50%; /* Центрируем по горизонтали */
+    transform: translateX(-50%); /* Центрируем по горизонтали */
+    animation: airplaneAnimation 20s linear infinite; /* Анимация полета самолетика */
+    z-index: 1; /* Отображаем самолет над фоном */
+}
+
+.airplane img {
+    width: 50px; /* Размер изображения самолетика */
+}
+
+.coefficients-container {
     background-color: #333; /* Темно-серый фон контейнера коэффициентов */
     padding: 20px; /* Увеличим отступы для контейнера коэффициентов */
     border-radius: 8px;
@@ -35,6 +52,7 @@ body {
     white-space: nowrap; /* Запрет переноса текста на новую строку */
     width: 70%; /* Ширина контейнера коэффициентов */
     margin: 0 auto; /* Центрируем контейнер по горизонтали */
+    z-index: 2; /* Отображаем коэффициенты над самолетом */
 }
 
 .loader {
@@ -68,22 +86,8 @@ body {
     margin-top: 10px; /* Отступ сверху */
 }
 
-/* Стили для самолетика */
-.airplane {
-    position: absolute;
-    top: -50px; /* Начальное положение над верхней границей экрана */
-    left: 50%; /* Центрируем по горизонтали */
-    transform: translateX(-50%); /* Центрируем по горизонтали */
-    animation: airplaneAnimation 20s linear infinite; /* Анимация полета самолетика */
-    z-index: 1; /* Отображаем самолет над фоном */
-}
-
-.airplane img {
-    width: 50px; /* Размер изображения самолетика */
-}
-
 .get-signal-button {
-    background-color: red; /* Зеленый цвет фона */
+    background-color: #4CAF50; /* Зеленый цвет фона */
     color: #fff; /* Белый цвет текста */
     border: none;
     padding: 10px 20px;
@@ -100,9 +104,4 @@ body {
 .get-signal-button:disabled {
     background-color: #ccc; /* Серый цвет для отключенной кнопки */
     cursor: not-allowed; /* Курсор "не доступен" для отключенной кнопки */
-}
-
-.coefficient {
-    display: inline-block;
-    margin: 0 5px; /* Отступы между коэффициентами */
 }
