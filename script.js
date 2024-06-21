@@ -42,28 +42,28 @@ function fetchCoefficients() {
             updateData(data);
             loadingFinished = true;
             loaderBar.style.animation = 'none'; // Отключаем анимацию загрузки
+
+            // Запускаем обновление коэффициентов после 25 секунд загрузки
             setTimeout(() => {
                 loaderBar.style.animation = 'loadAnimation 60s linear infinite'; // Включаем анимацию загрузки
-                fetchCoefficients(); // Обновляем коэффициенты после завершения загрузки
-            }, 25000); // Загрузка длится 25 секунд
+                fetchCoefficients();
+            }, 25000);
+
         })
         .catch(error => {
             console.error('Ошибка при получении коэффициентов:', error);
         });
 }
 
-// Отслеживаем завершение анимации загрузки
-loaderBar.addEventListener('animationend', () => {
-    fetchCoefficients();
-});
-
 // Обработчик для кнопки "GET SIGNAL"
 getSignalButton.addEventListener('click', () => {
     if (loadingFinished) {
         loadingFinished = false;
         loaderBar.style.animation = 'loadAnimation 25s linear'; // Включаем анимацию загрузки
+
+        // Запускаем обновление коэффициентов после 25 секунд загрузки
         setTimeout(() => {
-            fetchCoefficients(); // Запускаем обновление коэффициентов после 25 секунд загрузки
+            fetchCoefficients();
         }, 25000);
     }
 });

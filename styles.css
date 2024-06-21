@@ -60,6 +60,29 @@ body {
         width: 100%;
     }
 }
+.loader-bar {
+    width: 0%; /* Начальная ширина полосы загрузки */
+    height: 100%;
+    background-color: #d9534f; /* Красный цвет для полосы загрузки */
+    animation: loadAnimation 25s linear; /* Анимация загрузки при нажатии на кнопку */
+}
+
+@keyframes loadAnimation {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+.coefficient {
+    display: inline-block;
+    white-space: nowrap; /* Запрет переноса текста на новую строку */
+    margin: 0 5px; /* Отступы между коэффициентами */
+}
+
+
 
 .info-container {
     color: #ccc; /* Серый цвет для времени и шанса */
