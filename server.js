@@ -17,7 +17,7 @@ app.post('/get-coefficients', (req, res) => {
         currentCoefficients = generateRandomCoefficients();
 
         // Отправляем коэффициенты обратно в виде JSON
-        res.json({ coefficient1: parseFloat(currentCoefficients.coefficient1), coefficient2: parseFloat(currentCoefficients.coefficient2) });
+        res.json({ coefficient1: parseFloat(currentCoefficients[0]), coefficient2: parseFloat(currentCoefficients[1]) });
     } catch (error) {
         console.error('Ошибка при генерации коэффициентов:', error);
         res.status(500).json({ error: 'Ошибка при генерации коэффициентов' });
@@ -27,11 +27,11 @@ app.post('/get-coefficients', (req, res) => {
 // Функция для генерации случайных коэффициентов
 function generateRandomCoefficients() {
     const coefficient1 = (Math.random() * 5 + 1).toFixed(2); // Генерируем случайное число от 1 до 6 с двумя знаками после запятой
-    const coefficient2 = (coefficient1 * (Math.floor(Math.random() * 3) + 2)).toFixed(2); // Второй коэффициент в два или больше раза больше первого
-    return { coefficient1: parseFloat(coefficient1), coefficient2: parseFloat(coefficient2) };
+    const coefficient2 = (Math.random() * 5 + 1).toFixed(2); // Генерируем случайное число от 1 до 6 с двумя знаками после запятой
+    return [coefficient1, coefficient2];
 }
 
 // Запуск сервера
 app.listen(PORT, () => {
-    console.log(`Сервер запущен на порту ${PORT}`);
+    console.log("Сервер запущен на порту" ${PORT});
 });
