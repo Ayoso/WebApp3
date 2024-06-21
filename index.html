@@ -3,55 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flying Rockets Animation</title>
+    <title>Web App</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        /* Стили для ракет остаются такими же, как было указано ранее */
-    </style>
+
 </head>
 <body>
-<div class="rocket"><img src="https://cdn3d.iconscout.com/3d/premium/thumb/rocket-6004118-4956535.png" alt="Rocket"></div>
-<div class="rocket2"><img src="https://cdn3d.iconscout.com/3d/premium/thumb/rocket-6004118-4956535.png" alt="Rocket 2"></div>
-<div class="content">
-    <h1>Welcome to Turkish Ornaments</h1>
-    <div class="container">
-        <div id="coefficientsContainer">Loading coefficients...</div>
-        <div id="timeContainer">Loading time...</div>
-        <div id="chanceContainer">Loading chance...</div>
-    </div>
+<div class="container">
+    <h1>SİNYAL/SIGNAL</h1>
+    <div id="coefficientsContainer"></div>
+    <div id="timeContainer"></div>
+    <div id="chanceContainer"></div>
 </div>
 
-<script>
-    const coefficientsContainer = document.getElementById('coefficientsContainer');
-    const timeContainer = document.getElementById('timeContainer');
-    const chanceContainer = document.getElementById('chanceContainer');
+<!-- Контейнер для ракет -->
+<div class="rocket-container">
+    <div class="rocket"><img src="https://cdn3d.iconscout.com/3d/premium/thumb/rocket-6004118-4956535.png" alt="Rocket"></div>
+    <div class="rocket2"><img src="https://cdn3d.iconscout.com/3d/premium/thumb/rocket-6004118-4956535.png" alt="Rocket 2"></div>
+</div>
 
-    // Функция для получения данных с сервера
-    async function fetchData() {
-        try {
-            const response = await fetch('/data'); // Отправляем GET запрос на сервер
-            if (!response.ok) {
-                throw new Error('Ошибка получения данных');
-            }
-            const data = await response.json(); // Получаем JSON ответ от сервера
-
-            // Обновляем содержимое на странице с полученными данными
-            coefficientsContainer.textContent = `Coefficients: ${data.coefficient1}X - ${data.coefficient2}X`;
-            timeContainer.textContent = `Time: ${data.time}`;
-            chanceContainer.textContent = `Chance: ${data.chance}%`;
-        } catch (error) {
-            console.error('Ошибка:', error);
-            coefficientsContainer.textContent = 'Ошибка получения данных';
-            timeContainer.textContent = 'Ошибка получения данных';
-            chanceContainer.textContent = 'Ошибка получения данных';
-        }
-    }
-
-    // Запускаем функцию получения данных
-    fetchData();
-
-    // Добавляем интервал для обновления данных каждые 5 секунд (5000 мс)
-    setInterval(fetchData, 5000);
-</script>
+<script src="script.js"></script>
 </body>
 </html>
