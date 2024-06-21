@@ -1,65 +1,87 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #555; /* Темно-серый фон */
+    margin: 0;
+    background-color: #1a1a1a; /* Темно-серый фон */
+    overflow-x: hidden; /* Предотвращаем появление горизонтальной полосы прокрутки */
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://kartinki.pics/uploads/posts/2022-12/thumbs/1670444453_5-kartinkin-net-p-turetskii-ornament-kartinki-vkontakte-5.png'); /* Фон с турецкими орнаментами */
+    opacity: 0.2; /* Прозрачность фона */
+    z-index: -1; /* Помещаем фон под основные элементы */
 }
 
 .container {
+    position: relative;
     text-align: center;
     padding: 20px;
-    background-color: rgba(255, 255, 255, 0.8); /* Полупрозрачный белый фон контейнера */
+    background-color: rgba(255, 255, 255, 0.8); /* Полупрозрачный белый фон */
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px; /* Максимальная ширина контейнера */
 }
 
 h1 {
     color: #333;
 }
 
-#timeContainer,
-#chanceContainer {
-    margin-top: 10px;
-    font-size: 18px;
-}
-
 .coefficients-container {
-    position: relative;
-    width: 200px; /* Ширина контейнера коэффициентов */
-    height: 100px; /* Высота контейнера коэффициентов */
-    background-color: rgba(0, 0, 0, 0.1); /* Полупрозрачный черно-серый фон */
-    border-radius: 8px;
     margin-top: 20px;
+    width: 120px; /* Ширина контейнера коэффициентов */
+    height: 120px; /* Высота контейнера коэффициентов */
+    background-color: #444; /* Темно-серый фон коэффициентов */
+    border-radius: 8px;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
 #coefficientsContainer {
     font-size: 24px;
-    color: #333; /* Цвет текста коэффициентов */
+    color: #fff; /* Белый цвет текста коэффициентов */
 }
 
-.plane {
-    position: absolute;
-    top: 50%; /* Положение самолета по вертикали */
-    left: -100px; /* Начальное положение самолета за пределами экрана */
-    width: 100px; /* Ширина самолета */
-    height: 50px; /* Высота самолета */
-    background-image: url('https://img.freepik.com/free-vector/vector-illustration-plane-airplane-takeoff_53876-59023.jpg'); /* Изображение самолета */
-    background-size: cover;
-    animation: planeAnimation 10s linear infinite; /* Анимация полета самолета */
+.info-container {
+    margin-top: 20px;
 }
 
-@keyframes planeAnimation {
+#timeContainer,
+#chanceContainer {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #fff; /* Белый цвет текста времени и шанса */
+}
+
+.loader {
+    margin-top: 20px;
+    width: 100%;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.2); /* Полупрозрачный серый фон полосы загрузки */
+    border-radius: 5px;
+    overflow: hidden; /* Предотвращаем выход за границы */
+}
+
+.loader-bar {
+    width: 0%;
+    height: 100%;
+    background-color: #007bff; /* Цвет полосы загрузки */
+    animation: loaderAnimation 10s linear infinite; /* Анимация полосы загрузки */
+}
+
+@keyframes loaderAnimation {
     0% {
-        transform: translateX(-100px); /* Начальное положение самолета */
+        width: 0%; /* Начальная ширина полосы загрузки */
     }
     100% {
-        transform: translateX(100vw); /* Конечное положение самолета за пределами экрана */
+        width: 100%; /* Конечная ширина полосы загрузки */
     }
 }
