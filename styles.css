@@ -1,19 +1,17 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: #555; /* Темно-серый фон */
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-image: url('https://kartinki.pics/uploads/posts/2022-12/thumbs/1670444453_5-kartinkin-net-p-turetskii-ornament-kartinki-vkontakte-5.png'); /* Путь к изображению с турецкими орнаментами */
-    background-repeat: repeat; /* Повторять фон по горизонтали и вертикали */
 }
 
 .container {
     text-align: center;
     padding: 20px;
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.8); /* Полупрозрачный белый фон контейнера */
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -22,47 +20,46 @@ h1 {
     color: #333;
 }
 
-#coefficientsContainer {
-    margin-top: 20px;
-    font-size: 24px;
-}
-
 #timeContainer,
 #chanceContainer {
     margin-top: 10px;
     font-size: 18px;
 }
-/* Добавляем стили для ракет */
-.rocket {
-    position: absolute;
-    top: -50px; /* Начальное положение над верхней границей экрана */
-    left: calc(50% - 25px); /* Центрируем ракету по горизонтали */
-    width: 50px; /* Ширина ракеты */
-    animation: rocketAnimation 8s linear infinite; /* Применяем анимацию */
+
+.coefficients-container {
+    position: relative;
+    width: 200px; /* Ширина контейнера коэффициентов */
+    height: 100px; /* Высота контейнера коэффициентов */
+    background-color: rgba(0, 0, 0, 0.1); /* Полупрозрачный черно-серый фон */
+    border-radius: 8px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-@keyframes rocketAnimation {
+#coefficientsContainer {
+    font-size: 24px;
+    color: #333; /* Цвет текста коэффициентов */
+}
+
+.plane {
+    position: absolute;
+    top: 50%; /* Положение самолета по вертикали */
+    left: -100px; /* Начальное положение самолета за пределами экрана */
+    width: 100px; /* Ширина самолета */
+    height: 50px; /* Высота самолета */
+    background-image: url('https://img.freepik.com/free-vector/vector-illustration-plane-airplane-takeoff_53876-59023.jpg'); /* Изображение самолета */
+    background-size: cover;
+    animation: planeAnimation 10s linear infinite; /* Анимация полета самолета */
+}
+
+@keyframes planeAnimation {
     0% {
-        transform: translateY(0) rotate(0deg); /* Начальное положение и поворот ракеты */
+        transform: translateX(-100px); /* Начальное положение самолета */
     }
     100% {
-        transform: translateY(100vh) rotate(360deg); /* Конечное положение и поворот ракеты */
-    }
-}
-
-.rocket2 {
-    position: absolute;
-    top: -50px; /* Начальное положение над верхней границей экрана */
-    left: calc(75% - 25px); /* Центрируем вторую ракету по горизонтали */
-    width: 50px; /* Ширина второй ракеты */
-    animation: rocketAnimation2 10s linear infinite; /* Применяем анимацию для второй ракеты */
-}
-
-@keyframes rocketAnimation2 {
-    0% {
-        transform: translateY(0) rotate(0deg); /* Начальное положение и поворот второй ракеты */
-    }
-    100% {
-        transform: translateY(100vh) rotate(-360deg); /* Конечное положение и поворот второй ракеты */
+        transform: translateX(100vw); /* Конечное положение самолета за пределами экрана */
     }
 }
