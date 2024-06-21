@@ -81,6 +81,19 @@ body {
 .airplane img {
     width: 50px; /* Размер изображения самолетика */
 }
+.btn {
+    background-color: #4CAF50; /* Зеленый цвет кнопки */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px; /* Отступ сверху для кнопки */
+}
 
 @keyframes airplaneAnimation {
     0% {
