@@ -54,6 +54,13 @@ function fetchCoefficients() {
             console.error('Ошибка при получении коэффициентов:', error);
         });
 }
+// Функция для генерации случайных коэффициентов
+function generateRandomCoefficients() {
+    const coefficient1 = (Math.random() * 5 + 1).toFixed(2); // Генерируем случайное число от 1 до 6 с двумя знаками после запятой
+    const coefficient2 = (coefficient1 * (Math.floor(Math.random() * 3) + 2)).toFixed(2); // Второй коэффициент в два или больше раза больше первого
+    return [coefficient1, coefficient2];
+}
+
 
 // Обработчик для кнопки "GET SIGNAL"
 getSignalButton.addEventListener('click', () => {

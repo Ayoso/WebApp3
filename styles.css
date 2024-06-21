@@ -24,6 +24,12 @@ body {
     position: relative;
 }
 
+.coefficients-wrapper {
+    position: relative;
+    width: 70%;
+    margin: 0 auto;
+}
+
 .coefficients-container {
     background-color: #333; /* Темно-серый фон контейнера коэффициентов */
     padding: 20px; /* Увеличим отступы для контейнера коэффициентов */
@@ -32,8 +38,20 @@ body {
     color: #fff; /* Белый цвет текста */
     font-size: 24px;
     white-space: nowrap; /* Запрет переноса текста на новую строку */
-    width: 70%; /* Ширина контейнера коэффициентов */
-    margin: 0 auto; /* Центрируем контейнер по горизонтали */
+    position: relative;
+}
+
+.airplane {
+    position: absolute;
+    top: -25px; /* Начальное положение самолетика */
+    left: 50%; /* Центрируем по горизонтали */
+    transform: translateX(-50%); /* Центрируем по горизонтали */
+    animation: airplaneAnimation 20s linear infinite; /* Анимация полета самолетика */
+    z-index: 1; /* Отображаем самолет над фоном */
+}
+
+.airplane img {
+    width: 50px; /* Размер изображения самолетика */
 }
 
 .loader {
@@ -60,29 +78,6 @@ body {
         width: 100%;
     }
 }
-.loader-bar {
-    width: 0%; /* Начальная ширина полосы загрузки */
-    height: 100%;
-    background-color: #d9534f; /* Красный цвет для полосы загрузки */
-    animation: loadAnimation 25s linear; /* Анимация загрузки при нажатии на кнопку */
-}
-
-@keyframes loadAnimation {
-    0% {
-        width: 0%;
-    }
-    100% {
-        width: 100%;
-    }
-}
-
-.coefficient {
-    display: inline-block;
-    white-space: nowrap; /* Запрет переноса текста на новую строку */
-    margin: 0 5px; /* Отступы между коэффициентами */
-}
-
-
 
 .info-container {
     color: #ccc; /* Серый цвет для времени и шанса */
@@ -108,4 +103,16 @@ body {
 .get-signal-button:disabled {
     background-color: #ccc; /* Серый цвет для отключенной кнопки */
     cursor: not-allowed; /* Курсор "не доступен" для отключенной кнопки */
+}
+
+@keyframes airplaneAnimation {
+    0% {
+        transform: translateX(-50%) translateY(0);
+    }
+    50% {
+        transform: translateX(-50%) translateY(-25px);
+    }
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
 }
