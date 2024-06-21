@@ -49,6 +49,10 @@ body {
     align-items: center;
 }
 
+.coefficient {
+    margin: 0 10px;
+}
+
 .airplane {
     position: absolute;
     top: -25px; /* Начальное положение самолетика */
@@ -75,7 +79,7 @@ body {
     width: 0%; /* Начальная ширина полосы загрузки */
     height: 100%;
     background-color: #d9534f; /* Красный цвет для полосы загрузки */
-    animation: loadAnimation 60s linear infinite; /* Анимация движения полосы загрузки */
+    animation: loadAnimation 25s linear forwards; /* Анимация движения полосы загрузки */
 }
 
 @keyframes loadAnimation {
@@ -120,7 +124,7 @@ body {
     50% {
         transform: translateX(-50%) translateY(-25px);
     }
-    100% {s
+    100% {
         transform: translateX(-50%) translateY(0);
     }
 }
