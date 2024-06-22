@@ -49,7 +49,7 @@ getSignalButton.addEventListener('click', () => {
     if (loadingFinished) {
         loadingFinished = false;
         loaderBar.style.animation = 'none'; // Reset animation
-        loaderBar.offsetWidth; // Trigger reflow
+        void loaderBar.offsetWidth; // Trigger reflow
         loaderBar.style.animation = 'loadAnimation 25s linear'; // Start loading animation
         setTimeout(() => {
             fetchCoefficients(); // Fetch new coefficients after 25 seconds
