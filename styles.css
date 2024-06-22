@@ -54,7 +54,6 @@ body {
     bottom: 0;
     left: 0;
     transform: translate(0, 0);
-    animation: airplaneAnimation 10s linear infinite; /* Ускорение анимации */
     z-index: 0;
 }
 
