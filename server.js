@@ -26,11 +26,8 @@ app.post('/get-coefficients', (req, res) => {
 
 // Function to generate random coefficients
 function generateRandomCoefficients() {
-    let coefficient1, coefficient2;
-    do {
-        coefficient1 = (Math.random() * 2.1 + 2.3).toFixed(2); // Generate random number between 2.3 and 4.4
-        coefficient2 = (Math.random() * 2.1 + 4.4).toFixed(2); // Generate random number between 4.4 and 6.5
-    } while (parseFloat(coefficient1) * 2 > parseFloat(coefficient2)); // Ensure coefficient2 is at least twice coefficient1
+    const coefficient1 = (Math.random() * 5 + 1).toFixed(2); // Generate random number between 1 and 6
+    const coefficient2 = (Math.random() * 5 + 1).toFixed(2); // Generate random number between 1 and 6
     return { coefficient1, coefficient2 };
 }
 
