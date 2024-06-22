@@ -20,10 +20,13 @@ function updateData(coefficients) {
         `;
         coefficientsContainer.innerHTML = coefficientsHTML;
 
-        const time = new Date().toLocaleTimeString();
+        const currentTime = new Date();
+        const endTime = new Date(currentTime.getTime() + 25000);
+        const currentTimeString = currentTime.toLocaleTimeString();
+        const endTimeString = endTime.toLocaleTimeString();
         const chance = `${Math.floor(Math.random() * 21) + 70}%`;
 
-        timeContainer.textContent = `Time: ${time}`;
+        timeContainer.textContent = `Time: ${currentTimeString} - ${endTimeString}`;
         chanceContainer.textContent = `Chance: ${chance}`;
     }
 }
@@ -40,7 +43,7 @@ function fetchCoefficients() {
             updateData(data);
             loadingFinished = true;
             loaderBar.style.animation = 'none'; // Останавливаем анимацию после получения данных
-
+            loaderBar.style.width = '0'; // Сбрасываем ширину ползунка
         })
         .catch(error => {
             console.error('Ошибка при получении коэффициентов:', error);
@@ -50,7 +53,7 @@ function fetchCoefficients() {
 getSignalButton.addEventListener('click', () => {
     if (loadingFinished) {
         loadingFinished = false;
-        loaderBar.style.animation = 'loadпAnimation 25s linear'; // Запускаем анимацию загрузки
+        loaderBar.style.animation = 'loadAnimation 25s linear'; // Запускаем анимацию загрузки
         setTimeout(() => {
             fetchCoefficients(); // Получаем новые коэффициенты через 25 секунд
         }, 25000);
