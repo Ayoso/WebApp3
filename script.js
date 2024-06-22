@@ -1,4 +1,4 @@
-const webAppUrl = 'http://localhost:3002';
+const webAppUrl = 'https://web-app3-60pmpbo6a-ayosos-projects.vercel.app';
 
 const timeContainer = document.getElementById('timeContainer');
 const chanceContainer = document.getElementById('chanceContainer');
@@ -6,54 +6,12 @@ const beforeSignalContainer = document.getElementById('beforeSignalContainer');
 const loaderBar = document.querySelector('.loader-bar');
 const getSignalButton = document.getElementById('getSignalButton');
 const goToGameButton = document.getElementById('goToGameButton');
-
-if (getSignalButton) {
-    getSignalButton.addEventListener('click', () => {
-        console.log('Кнопка GET SIGNAL нажата');
-        if (loadingFinished) {
-            loadingFinished = false;
-            loaderBar.style.animation = 'none';
-            void loaderBar.offsetWidth; // Trigger reflow
-            loaderBar.style.animation = 'loadAnimation 10s linear';
-            fetchCoefficients();
-        }
-    });
-}
-
-if (goToGameButton) {
-    goToGameButton.addEventListener('click', () => {
-        window.location.href = 'https://example.com/game';
-    });
-}
+const airplane = document.querySelector('.airplane');
 
 let loadingFinished = true;
-let nextSignalTime = null;
-
-function updateTime() {
-    const currentTime = new Date();
-    const currentTimeString = currentTime.toLocaleTimeString();
-    timeContainer.textContent = `Time: ${currentTimeString}`;
-
-    if (nextSignalTime) {
-        const timeDiff = nextSignalTime - currentTime;
-        if (timeDiff > 0) {
-            const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
-            beforeSignalContainer.textContent = `Before the signal: ${minutes}m ${seconds}s`;
-        } else {
-            beforeSignalContainer.textContent = `Before the signal: 0m 0s`;
-        }
-    }
-}
-
-// Обновляем время каждую секунду
-setInterval(updateTime, 1000);
-
-// Обновляем время сразу при загрузке страницы
-updateTime();
 
 function updateData(coefficients) {
-    console.log('Обновление данных:', coefficients);
+    console.log('Обновление данgit add .ных:', coefficients);
     if (coefficients) {
         const coefficient1 = parseFloat(coefficients.coefficient1).toFixed(2);
         const coefficient2 = parseFloat(coefficients.coefficient2).toFixed(2);
@@ -70,11 +28,19 @@ function updateData(coefficients) {
             console.error('Элементы для отображения коэффициентов не найдены');
         }
 
+        const currentTime = new Date();
+        const currentTimeString = currentTime.toLocaleTimeString();
         const chance = `${Math.floor(Math.random() * 21) + 70}%`;
+
+        timeContainer.textContent = `Time: ${currentTimeString}`;
         chanceContainer.textContent = `Chance: ${chance}`;
 
-        // Устанавливаем время следующего сигнала на 60 секунд вперед
-        nextSignalTime = new Date(new Date().getTime() + 60000);
+        // Обновление времени до следующего сигнала
+        const nextSignalTime = new Date(currentTime.getTime() + 60000); // Следующий сигнал через 1 минуту
+        const timeDifference = nextSignalTime - currentTime;
+        const minutes = Math.floor(timeDifference / 60000);
+        const seconds = ((timeDifference % 60000) / 1000).toFixed(0);
+        beforeSignalContainer.textContent = `Before the signal: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
     } else {
         console.error('Коэффициенты не получены');
     }
@@ -100,8 +66,9 @@ function fetchCoefficients() {
                 updateData(data);
                 loaderBar.style.animation = 'none';
                 loaderBar.style.width = '0';
-                void loaderBar.offsetWidth; // Trigger reflow
-                loaderBar.style.animation = 'loadAnimation 10s linear';
+                airplane.style.animation = 'none';
+                void airplane.offsetWidth;
+                airplane.style.animation = 'airplaneFly 10s linear infinite';
                 loadingFinished = true;
             }, 10000);
         })
@@ -109,4 +76,20 @@ function fetchCoefficients() {
             console.error('Ошибка при получении коэффициентов:', error);
             loadingFinished = true;
         });
+
 }
+
+getSignalButton.addEventListener('click', () => {
+    console.log('Кнопка GET SIGNAL нажата');
+    if (loadingFinished) {
+        loadingFinished = false;
+        loaderBar.style.animation = 'none';
+        void loaderBar.offsetWidth;
+        loaderBar.style.animation = 'loadAnimation 10s linear';
+        fetchCoefficients();
+    }
+});
+
+goToGameButton.addEventListener('click', () => {
+    window.location.href = 'https://example.com/game';
+});
