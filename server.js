@@ -30,7 +30,7 @@ function generateRandomCoefficients() {
     do {
         coefficient1 = (Math.random() * 2.3 + 2.3).toFixed(2); // Generate random number between 2.3 and 4.6
         coefficient2 = (Math.random() * 2.3 + 4.6).toFixed(2); // Generate random number between 4.6 and 6.9
-    } while (parseFloat(coefficient1) >= parseFloat(coefficient2) || (parseFloat(coefficient2) - parseFloat(coefficient1)) > 3); // Ensure coefficient2 is greater than coefficient1 and their difference is within 3
+    } while (parseFloat(coefficient1) >= parseFloat(coefficient2)); // Ensure coefficient2 is greater than coefficient1
     return { coefficient1, coefficient2 };
 }
 
