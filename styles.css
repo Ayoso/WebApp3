@@ -1,7 +1,7 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #000; /* Black background */
-    color: #fff; /* White text */
+    background-color: #000;
+    color: #fff;
     margin: 0;
     display: flex;
     justify-content: center;
@@ -12,7 +12,7 @@ body {
 .container {
     text-align: center;
     padding: 20px;
-    background-color: #1e1e1e; /* Dark grey background */
+    background-color: #1e1e1e;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     max-width: 400px;
@@ -22,46 +22,47 @@ body {
 .header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     margin-bottom: 20px;
 }
 
-.logo, .aviator-logo {
+.logo {
     height: 50px;
 }
 
 .coefficients-wrapper {
     position: relative;
     width: 100%;
-    margin: 0 auto;
     height: 150px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     background-color: #333;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     overflow: hidden;
-    font-size: 24px;
-    color: #fff;
+    background-image: url('path/to/background_image.png'); /* Обновите путь к изображению */
+    background-size: cover;
+    background-position: center;
 }
 
 .coefficients-container {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100%;
+    z-index: 1;
 }
 
 .coefficient {
     margin: 0 10px;
+    font-size: 36px;
+    font-weight: bold;
+    color: #fff; /* Убедимся, что текст белый */
 }
 
 .airplane {
     position: absolute;
     bottom: 0;
     left: 0;
-    transform: translateX(100%) translateY(-100%);
-    animation: airplaneAnimation 25s linear infinite;
+    transform: translate(0, 0);
+    animation: airplaneAnimation 10s linear infinite;
+    z-index: 0;
 }
 
 .airplane img {
@@ -89,6 +90,11 @@ body {
     100% { width: 100%; }
 }
 
+@keyframes airplaneAnimation {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(calc(100% - 50px), calc(-100% + 50px)); }
+}
+
 .info-container {
     margin-top: 10px;
     font-size: 18px;
@@ -108,9 +114,4 @@ body {
 
 .button:hover {
     background-color: #45a049;
-}
-
-@keyframes airplaneAnimation {
-    0% { transform: translateX(0%) translateY(0%); }
-    100% { transform: translateX(100%) translateY(-100%); }
 }

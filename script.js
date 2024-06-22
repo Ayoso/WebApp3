@@ -1,49 +1,68 @@
-const webAppUrl = 'https://web-app3-three.vercel.app'; // Замените на ваш URL
+const webAppUrl = 'https://web-app3-three.vercel.app'; // Убедитесь, что URL правильный
 
-const coefficientsContainer = document.getElementById('coefficientsContainer');
 const timeContainer = document.getElementById('timeContainer');
 const chanceContainer = document.getElementById('chanceContainer');
 const loaderBar = document.querySelector('.loader-bar');
-const getSignalButton = document.querySelector('.get-signal-button');
-const goToGameButton = document.querySelector('.go-to-game-button');
+const getSignalButton = document.getElementById('getSignalButton');
+const goToGameButton = document.getElementById('goToGameButton');
+const airplane = document.querySelector('.airplane'); // Добавляем самолёт
 
-let loadingFinished = true; // Устанавливаем начальное значение в true
+let loadingFinished = true; // Начальное значение true
 
 function updateData(coefficients) {
+    console.log('Обновление данных:', coefficients);
     if (coefficients) {
-        const coefficient1 = coefficients.coefficient1.toFixed(2);
-        const coefficient2 = coefficients.coefficient2.toFixed(2);
+        const coefficient1 = parseFloat(coefficients.coefficient1).toFixed(2);
+        const coefficient2 = parseFloat(coefficients.coefficient2).toFixed(2);
 
-        const coefficientsHTML = `
-            <div class="coefficient">${coefficient1}X</div>
-            <div class="coefficient">- ${coefficient2}X</div>
-        `;
-        coefficientsContainer.innerHTML = coefficientsHTML;
+        console.log('Коэффициенты:', coefficient1, coefficient2);
+
+        const coefficient1Element = document.getElementById('coefficient1');
+        const coefficient2Element = document.getElementById('coefficient2');
+
+        if (coefficient1Element && coefficient2Element) {
+            coefficient1Element.textContent = `${coefficient1}X`;
+            coefficient2Element.textContent = `- ${coefficient2}X`;
+        } else {
+            console.error('Элементы для отображения коэффициентов не найдены');
+        }
 
         const currentTime = new Date();
-        const endTime = new Date(currentTime.getTime() + 25000);
         const currentTimeString = currentTime.toLocaleTimeString();
-        const endTimeString = endTime.toLocaleTimeString();
         const chance = `${Math.floor(Math.random() * 21) + 70}%`;
 
-        timeContainer.textContent = `Time: ${currentTimeString} - ${endTimeString}`;
+        timeContainer.textContent = `Time: ${currentTimeString}`;
         chanceContainer.textContent = `Chance: ${chance}`;
+    } else {
+        console.error('Коэффициенты не получены');
     }
 }
 
 function fetchCoefficients() {
+    console.log('Запрос коэффициентов...');
     fetch(`${webAppUrl}/get-coefficients`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
     })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
         .then(data => {
-            updateData(data);
-            loadingFinished = true;
-            loaderBar.style.animation = 'none'; // Останавливаем анимацию после получения данных
-            loaderBar.style.width = '0'; // Сбрасываем ширину ползунка
+            console.log('Коэффициенты получены:', data);
+            setTimeout(() => {
+                updateData(data);
+                loadingFinished = true;
+                loaderBar.style.animation = 'none'; // Остановить анимацию после получения данных
+                loaderBar.style.width = '0'; // Сбросить ширину загрузчика
+                airplane.style.animation = 'none'; // Остановить анимацию самолета после получения данных
+                void airplane.offsetWidth; // Запустить перерисовку
+                airplane.style.animation = 'airplaneAnimation 10s linear'; // Перезапустить анимацию самолета
+            }, 10000); // Задержка 10 секунд для завершения анимации
         })
         .catch(error => {
             console.error('Ошибка при получении коэффициентов:', error);
@@ -53,13 +72,13 @@ function fetchCoefficients() {
 getSignalButton.addEventListener('click', () => {
     if (loadingFinished) {
         loadingFinished = false;
-        loaderBar.style.animation = 'loadAnimation 25s linear'; // Запускаем анимацию загрузки
-        setTimeout(() => {
-            fetchCoefficients(); // Получаем новые коэффициенты через 25 секунд
-        }, 25000);
+        loaderBar.style.animation = 'none'; // Остановить текущую анимацию
+        void loaderBar.offsetWidth; // Триггер перерисовки
+        loaderBar.style.animation = 'loadAnimation 10s linear'; // Перезапустить анимацию загрузки
+        fetchCoefficients();
     }
 });
 
 goToGameButton.addEventListener('click', () => {
-    window.location.href = 'https://web-app3-three.vercel.app'; // Замените на URL вашей игры
+    window.location.href = 'https://example.com/game'; // Убедитесь, что URL правильный
 });
