@@ -7,8 +7,12 @@ const app = express();
 const PORT = process.env.PORT || 3002;
 
 app.use(bodyParser.json());
-app.use(cors());
-app.use(express.static(path.join(__dirname, 'public'))); // Добавьте это для обслуживания статических файлов из папки 'public'
+app.use(cors({
+    origin: '*', // Либо укажите точный домен вашего фронтенд приложения
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
+app.use(express.static(path.join(__dirname, 'public')));
 
 let currentCoefficients = generateRandomCoefficients(); // Инициализация случайными коэффициентами
 
