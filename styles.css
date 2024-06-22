@@ -85,12 +85,11 @@ body {
 
 @keyframes airplaneFly {
     0% { transform: translate(0, 0); }
-    25% { transform: translate(calc(100% - 50px), calc(-100% + 150px)); }
-    50% { transform: translate(calc(100% - 50px), 0); }
-    75% { transform: translate(0, calc(-100% + 150px)); }
+    25% { transform: translate(100%, -100%); }
+    50% { transform: translate(100%, 0); }
+    75% { transform: translate(0, -100%); }
     100% { transform: translate(0, 0); }
 }
-
 
 .info-container {
     margin-top: 10px;
