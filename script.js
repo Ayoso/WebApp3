@@ -1,4 +1,4 @@
-const webAppUrl = 'https://web-app3-three.vercel.app'; // Убедитесь, что URL правильный
+const webAppUrl = 'https://legendary-bombolone-18e5fd.netlify.app'; // Убедитесь, что URL правильный
 
 const timeContainer = document.getElementById('timeContainer');
 const chanceContainer = document.getElementById('chanceContainer');
@@ -6,8 +6,6 @@ const loaderBar = document.querySelector('.loader-bar');
 const getSignalButton = document.getElementById('getSignalButton');
 const goToGameButton = document.getElementById('goToGameButton');
 const airplane = document.querySelector('.airplane'); // Добавляем самолёт
-
-let loadingFinished = true; // Начальное значение true
 
 function updateData(coefficients) {
     console.log('Обновление данных:', coefficients);
@@ -56,16 +54,17 @@ function fetchCoefficients() {
             console.log('Коэффициенты получены:', data);
             setTimeout(() => {
                 updateData(data);
-                loadingFinished = true;
                 loaderBar.style.animation = 'none'; // Остановить анимацию после получения данных
                 loaderBar.style.width = '0'; // Сбросить ширину загрузчика
                 airplane.style.animation = 'none'; // Остановить анимацию самолета после получения данных
                 void airplane.offsetWidth; // Запустить перерисовку
                 airplane.style.animation = 'airplaneAnimation 10s linear'; // Перезапустить анимацию самолета
+                loadingFinished = true;
             }, 10000); // Задержка 10 секунд для завершения анимации
         })
         .catch(error => {
             console.error('Ошибка при получении коэффициентов:', error);
+            loadingFinished = true; // Сбросить состояние загрузки в случае ошибки
         });
 }
 
