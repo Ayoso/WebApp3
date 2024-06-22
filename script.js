@@ -18,12 +18,10 @@ function updateData(coefficients) {
         document.getElementById('coefficient2').textContent = `- ${coefficient2}X`;
 
         const currentTime = new Date();
-        const endTime = new Date(currentTime.getTime() + 25000);
         const currentTimeString = currentTime.toLocaleTimeString();
-        const endTimeString = endTime.toLocaleTimeString();
         const chance = `${Math.floor(Math.random() * 21) + 70}%`;
 
-        timeContainer.textContent = `Time: ${currentTimeString} - ${endTimeString}`;
+        timeContainer.textContent = `Time: ${currentTimeString}`;
         chanceContainer.textContent = `Chance: ${chance}`;
     }
 }
@@ -50,6 +48,8 @@ function fetchCoefficients() {
 getSignalButton.addEventListener('click', () => {
     if (loadingFinished) {
         loadingFinished = false;
+        loaderBar.style.animation = 'none'; // Reset animation
+        loaderBar.offsetWidth; // Trigger reflow
         loaderBar.style.animation = 'loadAnimation 25s linear'; // Start loading animation
         setTimeout(() => {
             fetchCoefficients(); // Fetch new coefficients after 25 seconds
