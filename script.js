@@ -68,7 +68,7 @@ function fetchCoefficients() {
                 loaderBar.style.width = '0';
                 airplane.style.animation = 'none';
                 void airplane.offsetWidth;
-                airplane.style.animation = 'airplaneFly 10s linear infinite';
+                airplane.style.animation = 'airplaneFly 20s linear infinite';
                 loadingFinished = true;
             }, 10000);
         })
