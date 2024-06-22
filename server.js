@@ -1,23 +1,23 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const path = require('path');
 
 const app = express();
-const PORT = process.env.PORT || 3002; // Измените порт на 3002 или любой другой доступный порт
+const PORT = process.env.PORT || 3002;
 
 app.use(bodyParser.json());
-app.use(cors()); // Добавьте эту строку для разрешения CORS
+app.use(cors());
 
-let currentCoefficients = generateRandomCoefficients(); // Инициализация случайными коэффициентами
+// Сервировка статических файлов из папки public
+app.use(express.static(path.join(__dirname, 'public')));
 
-// Эндпоинт для получения коэффициентов
+let currentCoefficients = generateRandomCoefficients();
+
 app.post('/get-coefficients', (req, res) => {
     try {
-        // Обновить текущие коэффициенты случайными значениями
         currentCoefficients = generateRandomCoefficients();
         console.log('Отправка коэффициентов:', currentCoefficients);
-
-        // Отправить коэффициенты в формате JSON
         res.json({ coefficient1: parseFloat(currentCoefficients.coefficient1), coefficient2: parseFloat(currentCoefficients.coefficient2) });
     } catch (error) {
         console.error('Ошибка при генерации коэффициентов:', error);
@@ -25,17 +25,20 @@ app.post('/get-coefficients', (req, res) => {
     }
 });
 
-// Функция генерации случайных коэффициентов
 function generateRandomCoefficients() {
     let coefficient1, coefficient2;
     do {
-        coefficient1 = (Math.random() * 2.7 + 2.3).toFixed(2); // Генерация случайного числа от 2.3 до 5.0
-        coefficient2 = (Math.random() * 3.5 + parseFloat(coefficient1) + 1).toFixed(2); // Генерация случайного числа от coefficient1 + 1 до coefficient1 + 4.5
-    } while (parseFloat(coefficient1) >= parseFloat(coefficient2)); // Убедиться, что coefficient2 больше coefficient1
+        coefficient1 = (Math.random() * 2.7 + 2.3).toFixed(2);
+        coefficient2 = (Math.random() * 3.5 + parseFloat(coefficient1) + 1).toFixed(2);
+    } while (parseFloat(coefficient1) >= parseFloat(coefficient2));
     return { coefficient1, coefficient2 };
 }
 
-// Запуск сервера
+// Отправка index.html для любого GET-запроса
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
 app.listen(PORT, () => {
     console.log(`Сервер работает на порту ${PORT}`);
 }).on('error', (err) => {
