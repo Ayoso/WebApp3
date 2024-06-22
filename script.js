@@ -2,17 +2,30 @@ const webAppUrl = 'http://localhost:3002';
 
 const timeContainer = document.getElementById('timeContainer');
 const chanceContainer = document.getElementById('chanceContainer');
+const beforeSignalContainer = document.getElementById('beforeSignalContainer');
 const loaderBar = document.querySelector('.loader-bar');
 const getSignalButton = document.getElementById('getSignalButton');
 const goToGameButton = document.getElementById('goToGameButton');
 const airplane = document.querySelector('.airplane');
 
 let loadingFinished = true;
+let nextSignalTime = null;
 
 function updateTime() {
     const currentTime = new Date();
     const currentTimeString = currentTime.toLocaleTimeString();
     timeContainer.textContent = `Time: ${currentTimeString}`;
+
+    if (nextSignalTime) {
+        const timeDiff = nextSignalTime - currentTime;
+        if (timeDiff > 0) {
+            const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+            beforeSignalContainer.textContent = `Before the signal: ${minutes}m ${seconds}s`;
+        } else {
+            beforeSignalContainer.textContent = `Before the signal: 0m 0s`;
+        }
+    }
 }
 
 // Обновляем время каждую секунду
@@ -41,6 +54,9 @@ function updateData(coefficients) {
 
         const chance = `${Math.floor(Math.random() * 21) + 70}%`;
         chanceContainer.textContent = `Chance: ${chance}`;
+
+        // Устанавливаем время следующего сигнала на 60 секунд вперед
+        nextSignalTime = new Date(new Date().getTime() + 60000);
     } else {
         console.error('Коэффициенты не получены');
     }
