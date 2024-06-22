@@ -106,8 +106,8 @@ body {
     margin-top: 10px; /* Отступ сверху */
 }
 
-/* Стили для кнопки */
-.get-signal-button {
+/* Стили для кнопок */
+.get-signal-button, .go-to-game-button {
     background-color: #4CAF50; /* Зеленый цвет фона */
     color: #fff; /* Белый цвет текста */
     border: none;
@@ -116,9 +116,10 @@ body {
     cursor: pointer;
     border-radius: 4px;
     margin-top: 20px; /* Отступ сверху */
+    margin-right: 10px;
 }
 
-.get-signal-button:hover {
+.get-signal-button:hover, .go-to-game-button:hover {
     background-color: #45a049; /* Темнее зеленый при наведении */
 }
 

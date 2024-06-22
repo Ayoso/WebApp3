@@ -6,6 +6,7 @@ const timeContainer = document.getElementById('timeContainer');
 const chanceContainer = document.getElementById('chanceContainer');
 const loaderBar = document.querySelector('.loader-bar');
 const getSignalButton = document.querySelector('.get-signal-button');
+const goToGameButton = document.querySelector('.go-to-game-button');
 
 let loadingFinished = false; // Флаг для отслеживания завершения загрузки
 
@@ -18,7 +19,7 @@ function updateData(coefficients) {
         // Создаем HTML для коэффициентов
         const coefficientsHTML = `
             <div class="coefficient">${coefficient1}X</div>
-            <div class="coefficient"> - ${coefficient2}X</div>
+            <div class="coefficient">- ${coefficient2}X</div>
         `;
 
         // Вставляем HTML в coefficientsContainer
