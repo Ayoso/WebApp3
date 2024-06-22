@@ -1,4 +1,4 @@
-const webAppUrl = 'http://localhost:3000'; // Replace with your URL
+const webAppUrl = 'https://legendary-bombolone-18e5fd.netlify.app'; // Replace with your URL
 
 const coefficientsContainer = document.getElementById('coefficientsContainer');
 const timeContainer = document.getElementById('timeContainer');
