@@ -9,6 +9,18 @@ const airplane = document.querySelector('.airplane');
 
 let loadingFinished = true;
 
+function updateTime() {
+    const currentTime = new Date();
+    const currentTimeString = currentTime.toLocaleTimeString();
+    timeContainer.textContent = `Time: ${currentTimeString}`;
+}
+
+// Обновляем время каждую секунду
+setInterval(updateTime, 1000);
+
+// Обновляем время сразу при загрузке страницы
+updateTime();
+
 function updateData(coefficients) {
     console.log('Обновление данных:', coefficients);
     if (coefficients) {
@@ -27,11 +39,7 @@ function updateData(coefficients) {
             console.error('Элементы для отображения коэффициентов не найдены');
         }
 
-        const currentTime = new Date();
-        const currentTimeString = currentTime.toLocaleTimeString();
         const chance = `${Math.floor(Math.random() * 21) + 70}%`;
-
-        timeContainer.textContent = `Time: ${currentTimeString}`;
         chanceContainer.textContent = `Chance: ${chance}`;
     } else {
         console.error('Коэффициенты не получены');
