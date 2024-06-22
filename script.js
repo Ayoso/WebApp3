@@ -7,6 +7,25 @@ const loaderBar = document.querySelector('.loader-bar');
 const getSignalButton = document.getElementById('getSignalButton');
 const goToGameButton = document.getElementById('goToGameButton');
 
+if (getSignalButton) {
+    getSignalButton.addEventListener('click', () => {
+        console.log('Кнопка GET SIGNAL нажата');
+        if (loadingFinished) {
+            loadingFinished = false;
+            loaderBar.style.animation = 'none';
+            void loaderBar.offsetWidth; // Trigger reflow
+            loaderBar.style.animation = 'loadAnimation 10s linear';
+            fetchCoefficients();
+        }
+    });
+}
+
+if (goToGameButton) {
+    goToGameButton.addEventListener('click', () => {
+        window.location.href = 'https://example.com/game';
+    });
+}
+
 let loadingFinished = true;
 let nextSignalTime = null;
 
@@ -91,18 +110,3 @@ function fetchCoefficients() {
             loadingFinished = true;
         });
 }
-
-getSignalButton.addEventListener('click', () => {
-    console.log('Кнопка GET SIGNAL нажата');
-    if (loadingFinished) {
-        loadingFinished = false;
-        loaderBar.style.animation = 'none';
-        void loaderBar.offsetWidth; // Trigger reflow
-        loaderBar.style.animation = 'loadAnimation 10s linear';
-        fetchCoefficients();
-    }
-});
-
-goToGameButton.addEventListener('click', () => {
-    window.location.href = 'https://example.com/game';
-});
