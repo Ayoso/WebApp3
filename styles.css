@@ -62,7 +62,7 @@ body {
     left: 0;
     transform: translate(0, 0);
     z-index: 0;
-    animation: airplaneAnimation 10s linear infinite;
+    animation: airplaneAnimation 5s linear infinite alternate; /* Changed animation duration and added 'alternate' */
 }
 
 .airplane img {
@@ -92,10 +92,7 @@ body {
 
 @keyframes airplaneAnimation {
     0% { transform: translate(0, 0); }
-    25% { transform: translate(calc(100% - 50px), calc(-100% - 100%)); }
-    50% { transform: translate(0, calc(-100% - 200px)); }
-    75% { transform: translate(calc(-100% + 50px), calc(100% + 100px)); }
-    100% { transform: translate(0, 0); }
+    100% { transform: translate(calc(100% - 50px), calc(-100% + 150px)); }
 }
 
 .info-container {
