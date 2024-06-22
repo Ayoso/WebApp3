@@ -31,8 +31,10 @@ app.post('/get-coefficients', (req, res) => {
     }
 });
 
+// Сервировка статических файлов из папки public
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Отправка index.html для любого GET-запроса
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
