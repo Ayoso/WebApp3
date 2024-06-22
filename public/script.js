@@ -1,8 +1,7 @@
-const webAppUrl = 'https://web-app3-60pmpbo6a-ayosos-projects.vercel.app';
+const webAppUrl = 'https://web-app3-60pmpbo6a-ayosos-projects.vercel.app'; // Замените на ваш URL Vercel
 
 const timeContainer = document.getElementById('timeContainer');
 const chanceContainer = document.getElementById('chanceContainer');
-const beforeSignalContainer = document.getElementById('beforeSignalContainer');
 const loaderBar = document.querySelector('.loader-bar');
 const getSignalButton = document.getElementById('getSignalButton');
 const goToGameButton = document.getElementById('goToGameButton');
@@ -34,12 +33,6 @@ function updateData(coefficients) {
 
         timeContainer.textContent = `Time: ${currentTimeString}`;
         chanceContainer.textContent = `Chance: ${chance}`;
-
-        const nextSignalTime = new Date(currentTime.getTime() + 60000);
-        const timeDifference = nextSignalTime - currentTime;
-        const minutes = Math.floor(timeDifference / 60000);
-        const seconds = ((timeDifference % 60000) / 1000).toFixed(0);
-        beforeSignalContainer.textContent = `Before the signal: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
     } else {
         console.error('Коэффициенты не получены');
     }
