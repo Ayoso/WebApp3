@@ -66,18 +66,9 @@ body {
     color: #fff;
 }
 
-.airplane {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    transform: translate(0, 0);
-    animation: airplaneFly 20s linear infinite;
-    z-index: 1;
-}
 
-.airplane img {
-    width: 50px;
-}
+
+
 
 .loader {
     width: 100%;
