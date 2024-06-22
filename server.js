@@ -6,7 +6,7 @@ const app = express();
 const PORT = process.env.PORT || 3002; // Измените порт на 3002 или любой другой доступный порт
 
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors()); // Добавьте эту строку для разрешения CORS
 
 let currentCoefficients = generateRandomCoefficients(); // Инициализация случайными коэффициентами
 
