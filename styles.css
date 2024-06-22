@@ -34,6 +34,13 @@ body {
     background-color: #333;
     border-radius: 8px;
     overflow: hidden;
+    background: repeating-linear-gradient(
+            45deg,
+            #1e1e1e,
+            #1e1e1e 10px,
+            #333 10px,
+            #333 20px
+    );
 }
 
 .coefficients-container {
@@ -54,8 +61,8 @@ body {
     bottom: 0;
     left: 0;
     transform: translate(0, 0);
-    animation: airplaneAnimation 10s linear infinite; /* Ускорение анимации */
     z-index: 0;
+    animation: airplaneAnimation 10s linear infinite;
 }
 
 .airplane img {
@@ -85,7 +92,7 @@ body {
 
 @keyframes airplaneAnimation {
     0% { transform: translate(0, 0); }
-    100% { transform: translate(calc(100% - 50px), calc(-100% + 200px)); }
+    100% { transform: translate(calc(100% - 50px), calc(-100% - 150px)); }
 }
 
 .info-container {
