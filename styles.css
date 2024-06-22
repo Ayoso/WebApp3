@@ -51,16 +51,12 @@ body {
     justify-content: center;
     align-items: center;
     z-index: 1; /* Make sure it's in front */
-    width: 400px;
-    height: 400px;
 }
 
 .coefficient {
     margin: 0 10px;
     color: white;
     font-size: large;
-    width: 20px;
-    height: 20px;
 }
 
 .airplane {

@@ -3,9 +3,8 @@ const webAppUrl = 'https://legendary-bombolone-18e5fd.netlify.app'; // Обно�
 const coefficientsContainer = document.getElementById('coefficientsContainer');
 const timeContainer = document.getElementById('timeContainer');
 const chanceContainer = document.getElementById('chanceContainer');
-const loaderBar = document.querySelector('.loader-bar');
-const getSignalButton = document.querySelector('.get-signal-button');
-const goToGameButton = document.querySelector('.go-to-game-button');
+const loaderBar = document.getElementById('loaderBar');
+const getSignalButton = document.getElementById('getSignalButton');
 
 let loadingFinished = true; // Initial value set to true
 
@@ -55,10 +54,6 @@ getSignalButton.addEventListener('click', () => {
             fetchCoefficients(); // Fetch new coefficients after 25 seconds
         }, 25000);
     }
-});
-
-goToGameButton.addEventListener('click', () => {
-    window.location.href = 'https://your-game-url.com'; // Replace with your game URL
 });
 
 // Function to update time in real-time
