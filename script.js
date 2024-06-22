@@ -1,4 +1,4 @@
-const webAppUrl = 'https://legendary-bombolone-18e5fd.netlify.app'; // Замените на ваш URL
+const webAppUrl = 'https://legendary-bombolone-18e5fd.netlify.app'; // Replace with your URL
 
 const coefficientsContainer = document.getElementById('coefficientsContainer');
 const timeContainer = document.getElementById('timeContainer');
@@ -7,7 +7,7 @@ const loaderBar = document.querySelector('.loader-bar');
 const getSignalButton = document.querySelector('.get-signal-button');
 const goToGameButton = document.querySelector('.go-to-game-button');
 
-let loadingFinished = true; // Устанавливаем начальное значение в true
+let loadingFinished = true; // Initial value set to true
 
 function updateData(coefficients) {
     if (coefficients) {
@@ -42,24 +42,24 @@ function fetchCoefficients() {
         .then(data => {
             updateData(data);
             loadingFinished = true;
-            loaderBar.style.animation = 'none'; // Останавливаем анимацию после получения данных
-            loaderBar.style.width = '0'; // Сбрасываем ширину ползунка
+            loaderBar.style.animation = 'none'; // Stop animation after receiving data
+            loaderBar.style.width = '0'; // Reset the loader width
         })
         .catch(error => {
-            console.error('Ошибка при получении коэффициентов:', error);
+            console.error('Error fetching coefficients:', error);
         });
 }
 
 getSignalButton.addEventListener('click', () => {
     if (loadingFinished) {
         loadingFinished = false;
-        loaderBar.style.animation = 'loadAnimation 25s linear'; // Запускаем анимацию загрузки
+        loaderBar.style.animation = 'loadAnimation 25s linear'; // Start loading animation
         setTimeout(() => {
-            fetchCoefficients(); // Получаем новые коэффициенты через 25 секунд
+            fetchCoefficients(); // Fetch new coefficients after 25 seconds
         }, 25000);
     }
 });
 
 goToGameButton.addEventListener('click', () => {
-    window.location.href = 'https://your-game-url.com'; // Замените на URL вашей игры
+    window.location.href = 'https://your-game-url.com'; // Replace with your game URL
 });
