@@ -8,35 +8,35 @@ const PORT = process.env.PORT || 3002; // Измените порт на 3002 и
 app.use(bodyParser.json());
 app.use(cors());
 
-let currentCoefficients = generateRandomCoefficients(); // Initialize with random coefficients
+let currentCoefficients = generateRandomCoefficients(); // Инициализация случайными коэффициентами
 
-// Endpoint to get coefficients
+// Эндпоинт для получения коэффициентов
 app.post('/get-coefficients', (req, res) => {
     try {
-        // Update current coefficients to random values
+        // Обновить текущие коэффициенты случайными значениями
         currentCoefficients = generateRandomCoefficients();
 
-        // Send coefficients back as JSON
+        // Отправить коэффициенты в формате JSON
         res.json({ coefficient1: parseFloat(currentCoefficients.coefficient1), coefficient2: parseFloat(currentCoefficients.coefficient2) });
     } catch (error) {
-        console.error('Error generating coefficients:', error);
-        res.status(500).json({ error: 'Error generating coefficients' });
+        console.error('Ошибка при генерации коэффициентов:', error);
+        res.status(500).json({ error: 'Ошибка при генерации коэффициентов' });
     }
 });
 
-// Function to generate random coefficients
+// Функция генерации случайных коэффициентов
 function generateRandomCoefficients() {
     let coefficient1, coefficient2;
     do {
-        coefficient1 = (Math.random() * 2.7 + 2.3).toFixed(2); // Generate random number between 2.3 and 5.0
-        coefficient2 = (Math.random() * 3.5 + parseFloat(coefficient1) + 1).toFixed(2); // Generate random number between coefficient1 + 1 and coefficient1 + 4.5
-    } while (parseFloat(coefficient1) >= parseFloat(coefficient2)); // Ensure coefficient2 is greater than coefficient1
+        coefficient1 = (Math.random() * 2.7 + 2.3).toFixed(2); // Генерация случайного числа от 2.3 до 5.0
+        coefficient2 = (Math.random() * 3.5 + parseFloat(coefficient1) + 1).toFixed(2); // Генерация случайного числа от coefficient1 + 1 до coefficient1 + 4.5
+    } while (parseFloat(coefficient1) >= parseFloat(coefficient2)); // Убедиться, что coefficient2 больше coefficient1
     return { coefficient1, coefficient2 };
 }
 
-// Start the server
+// Запуск сервера
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+    console.log(`Сервер работает на порту ${PORT}`);
 }).on('error', (err) => {
-    console.error(`Failed to start server on port ${PORT}: ${err.message}`);
+    console.error(`Не удалось запустить сервер на порту ${PORT}: ${err.message}`);
 });
