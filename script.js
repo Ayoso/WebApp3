@@ -58,8 +58,7 @@ getSignalButton.addEventListener('click', () => {
         loadingFinished = false;
         loaderBar.style.animation = 'none'; // Reset animation
         void loaderBar.offsetWidth; // Trigger reflow
-        loaderBar.style.animation = 'load Animation 10s linear';
-         // Start loading animation
+        loaderBar.style.animation = 'loadAnimation 10s linear'; // Start loading animation
         airplane.style.animation = 'none'; // Reset airplane animation
         void airplane.offsetWidth; // Trigger reflow
         airplane.style.animation = 'airplaneAnimation 10s linear'; // Start airplane animation
@@ -72,7 +71,7 @@ getSignalButton.addEventListener('click', () => {
 // Function to update time in real-time
 function updateTime() {
     const currentTime = new Date();
-    timeContainer.textContent = 'Time: ${currentTime.toLocaleTimeString()}';
+    timeContainer.textContent = `Time: ${currentTime.toLocaleTimeString()}`;
 }
 
 // Update time every second
