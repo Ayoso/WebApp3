@@ -6,7 +6,6 @@ const beforeSignalContainer = document.getElementById('beforeSignalContainer');
 const loaderBar = document.querySelector('.loader-bar');
 const getSignalButton = document.getElementById('getSignalButton');
 const goToGameButton = document.getElementById('goToGameButton');
-const airplane = document.querySelector('.airplane');
 
 let loadingFinished = true;
 let nextSignalTime = null;
@@ -82,9 +81,8 @@ function fetchCoefficients() {
                 updateData(data);
                 loaderBar.style.animation = 'none';
                 loaderBar.style.width = '0';
-                airplane.style.animation = 'none';
-                void airplane.offsetWidth;
-                airplane.style.animation = 'airplaneFly 20s linear infinite';
+                void loaderBar.offsetWidth; // Trigger reflow
+                loaderBar.style.animation = 'loadAnimation 10s linear';
                 loadingFinished = true;
             }, 10000);
         })
@@ -99,7 +97,7 @@ getSignalButton.addEventListener('click', () => {
     if (loadingFinished) {
         loadingFinished = false;
         loaderBar.style.animation = 'none';
-        void loaderBar.offsetWidth;
+        void loaderBar.offsetWidth; // Trigger reflow
         loaderBar.style.animation = 'loadAnimation 10s linear';
         fetchCoefficients();
     }
