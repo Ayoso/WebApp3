@@ -1,4 +1,4 @@
-const webAppUrl = 'http://localhost:8080/https://legendary-bombolone-18e5fd.netlify.app'; // Использование локального прокси
+const webAppUrl = 'http://localhost:8080/https://legendary-bombolone-18e5fd.netlify.app/get-coefficients'; // Использование локального прокси
 
 const timeContainer = document.getElementById('timeContainer');
 const chanceContainer = document.getElementById('chanceContainer');
@@ -40,7 +40,7 @@ function updateData(coefficients) {
 
 function fetchCoefficients() {
     console.log('Запрос коэффициентов...');
-    fetch(`${webAppUrl}/get-coefficients`, {
+    fetch(webAppUrl, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
