@@ -1,13 +1,13 @@
-const webAppUrl = 'http://localhost:3002'; // Использование прямого URL вашего сервера
+const webAppUrl = 'http://localhost:3002';
 
 const timeContainer = document.getElementById('timeContainer');
 const chanceContainer = document.getElementById('chanceContainer');
 const loaderBar = document.querySelector('.loader-bar');
 const getSignalButton = document.getElementById('getSignalButton');
 const goToGameButton = document.getElementById('goToGameButton');
-const airplane = document.querySelector('.airplane'); // Добавляем самолёт
+const airplane = document.querySelector('.airplane');
 
-let loadingFinished = true; // Глобальная переменная для отслеживания состояния загрузки
+let loadingFinished = true;
 
 function updateData(coefficients) {
     console.log('Обновление данных:', coefficients);
@@ -56,17 +56,17 @@ function fetchCoefficients() {
             console.log('Коэффициенты получены:', data);
             setTimeout(() => {
                 updateData(data);
-                loaderBar.style.animation = 'none'; // Остановить анимацию после получения данных
-                loaderBar.style.width = '0'; // Сбросить ширину загрузчика
-                airplane.style.animation = 'none'; // Остановить анимацию самолета после получения данных
-                void airplane.offsetWidth; // Запустить перерисовку
-                airplane.style.animation = 'airplaneAnimation 10s linear'; // Перезапустить анимацию самолета
+                loaderBar.style.animation = 'none';
+                loaderBar.style.width = '0';
+                airplane.style.animation = 'none';
+                void airplane.offsetWidth;
+                airplane.style.animation = 'airplaneFly 10s linear infinite';
                 loadingFinished = true;
-            }, 10000); // Задержка 10 секунд для завершения анимации
+            }, 10000);
         })
         .catch(error => {
             console.error('Ошибка при получении коэффициентов:', error);
-            loadingFinished = true; // Сбросить состояние загрузки в случае ошибки
+            loadingFinished = true;
         });
 }
 
@@ -74,13 +74,13 @@ getSignalButton.addEventListener('click', () => {
     console.log('Кнопка GET SIGNAL нажата');
     if (loadingFinished) {
         loadingFinished = false;
-        loaderBar.style.animation = 'none'; // Остановить текущую анимацию
-        void loaderBar.offsetWidth; // Триггер перерисовки
-        loaderBar.style.animation = 'loadAnimation 10s linear'; // Перезапустить анимацию загрузки
+        loaderBar.style.animation = 'none';
+        void loaderBar.offsetWidth;
+        loaderBar.style.animation = 'loadAnimation 10s linear';
         fetchCoefficients();
     }
 });
 
 goToGameButton.addEventListener('click', () => {
-    window.location.href = 'https://example.com/game'; // Убедитесь, что URL правильный
+    window.location.href = 'https://example.com/game';
 });
