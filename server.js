@@ -6,7 +6,13 @@ const app = express();
 const PORT = process.env.PORT || 3002; // Измените порт на 3002 или любой другой доступный порт
 
 app.use(bodyParser.json());
-app.use(cors());
+
+// Настроим CORS так, чтобы разрешить запросы с любого источника
+app.use(cors({
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 let currentCoefficients = generateRandomCoefficients(); // Initialize with random coefficients
 

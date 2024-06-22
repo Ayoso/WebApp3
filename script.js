@@ -1,4 +1,4 @@
-const webAppUrl = 'http://localhost:3002'; // Обновите порт, если вы изменили его в server.js
+const webAppUrl = 'http://localhost:3002'; // Измените на публичный URL-адрес вашего сервера, если он развернут
 
 const coefficientsContainer = document.getElementById('coefficientsContainer');
 const timeContainer = document.getElementById('timeContainer');
@@ -16,7 +16,7 @@ function updateData(coefficients) {
 
         while (parseFloat(coefficient1) >= parseFloat(coefficient2) || parseFloat(coefficient2) - parseFloat(coefficient1) < 2) {
             coefficient1 = (Math.random() * 3 + 2).toFixed(2); // Generate random number between 2 and 5
-            coefficient2 = (Math.random() * 3 + 5).toFixed(2); // Generate random number between 5 and 8
+            coefficient2 = (Math.random() * 3 + 5).toFixed(2); // Generate random number between 5 и 8
         }
 
         document.getElementById('coefficient1').textContent = `${coefficient1}X`;
