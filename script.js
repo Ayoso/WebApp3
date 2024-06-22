@@ -1,4 +1,4 @@
-const webAppUrl = 'http://localhost:3002'; // Измените на публичный URL-адрес вашего сервера, если он развернут
+const webAppUrl = 'https://legendary-bombolone-18e5fd.netlify.app'; // Измените на публичный URL-адрес вашего сервера, если он развернут
 
 const coefficientsContainer = document.getElementById('coefficientsContainer');
 const timeContainer = document.getElementById('timeContainer');
