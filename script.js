@@ -49,10 +49,10 @@ getSignalButton.addEventListener('click', () => {
         loadingFinished = false;
         loaderBar.style.animation = 'none'; // Reset animation
         void loaderBar.offsetWidth; // Trigger reflow
-        loaderBar.style.animation = 'loadAnimation 25s linear'; // Start loading animation
+        loaderBar.style.animation = 'loadAnimation 15s linear'; // Start loading animation
         setTimeout(() => {
-            fetchCoefficients(); // Fetch new coefficients after 25 seconds
-        }, 25000);
+            fetchCoefficients(); // Fetch new coefficients after 15 seconds
+        }, 15000); // Ускорение анимации загрузки
     }
 });
 
