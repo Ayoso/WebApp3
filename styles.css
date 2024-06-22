@@ -36,7 +36,6 @@ body {
     background-color: #333;
     border-radius: 8px;
     overflow: hidden;
-    background-image: url('path/to/background_image.png'); /* Обновите путь к изображению */
     background-size: cover;
     background-position: center;
 }
@@ -53,7 +52,7 @@ body {
     margin: 0 10px;
     font-size: 36px;
     font-weight: bold;
-    color: #fff; /* Убедимся, что текст белый */
+    color: #fff;
 }
 
 .airplane {

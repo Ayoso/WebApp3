@@ -70,6 +70,7 @@ function fetchCoefficients() {
 }
 
 getSignalButton.addEventListener('click', () => {
+    console.log('Кнопка GET SIGNAL нажата');
     if (loadingFinished) {
         loadingFinished = false;
         loaderBar.style.animation = 'none'; // Остановить текущую анимацию
