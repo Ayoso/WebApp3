@@ -60,7 +60,7 @@ body {
     position: absolute;
     bottom: 0;
     left: 0;
-    transform: translateX(100%) translateY(-100%);
+    transform: translateX(0%) translateY(0%);
     animation: airplaneAnimation 25s linear infinite;
 }
 
