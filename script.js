@@ -1,4 +1,4 @@
-const webAppUrl = 'https://legendary-bombolone-18e5fd.netlify.app'; // Replace with your URL
+const webAppUrl = 'http://localhost:3000'; // Replace with your URL
 
 const coefficientsContainer = document.getElementById('coefficientsContainer');
 const timeContainer = document.getElementById('timeContainer');
@@ -11,8 +11,8 @@ let loadingFinished = true; // Initial value set to true
 
 function updateData(coefficients) {
     if (coefficients) {
-        const coefficient1 = coefficients.coefficient1.toFixed(2);
-        const coefficient2 = coefficients.coefficient2.toFixed(2);
+        const coefficient1 = parseFloat(coefficients.coefficient1).toFixed(2);
+        const coefficient2 = parseFloat(coefficients.coefficient2).toFixed(2);
 
         const coefficientsHTML = `
             <div class="coefficient">${coefficient1}X</div>
