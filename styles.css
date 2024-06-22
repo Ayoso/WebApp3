@@ -36,6 +36,7 @@ body {
     background-color: #333;
     border-radius: 8px;
     overflow: hidden;
+    background-image: url('path/to/background_image.png'); /* Обновите путь к изображению */
     background-size: cover;
     background-position: center;
 }
@@ -81,7 +82,7 @@ body {
     width: 0;
     height: 100%;
     background-color: #d9534f;
-    animation: none;
+    animation: loadAnimation 10s linear;
 }
 
 @keyframes loadAnimation {
