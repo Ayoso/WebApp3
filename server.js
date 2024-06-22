@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001; // Измените порт на 3001 или любой другой доступный порт
 
 app.use(bodyParser.json());
 app.use(cors());

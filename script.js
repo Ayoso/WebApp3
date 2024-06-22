@@ -1,4 +1,4 @@
-const webAppUrl = 'https://legendary-bombolone-18e5fd.netlify.app'; // Replace with your URL if needed
+const webAppUrl = 'https://legendary-bombolone-18e5fd.netlify.app'; // Обновите порт, если вы изменили его в server.js
 
 const coefficientsContainer = document.getElementById('coefficientsContainer');
 const timeContainer = document.getElementById('timeContainer');
