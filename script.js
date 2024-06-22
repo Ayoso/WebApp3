@@ -1,4 +1,4 @@
-const webAppUrl = 'https://web-app3-three.vercel.app'; // Убедитесь, что этот URL правильный
+const webAppUrl = 'https://web-app3-three.vercel.app'; // Убедитесь, что URL правильный
 
 const timeContainer = document.getElementById('timeContainer');
 const chanceContainer = document.getElementById('chanceContainer');
@@ -9,9 +9,12 @@ const airplane = document.querySelector('.airplane'); // Добавляем са
 let loadingFinished = true; // Начальное значение true
 
 function updateData(coefficients) {
+    console.log('Обновление данных:', coefficients);
     if (coefficients) {
         const coefficient1 = parseFloat(coefficients.coefficient1).toFixed(2);
         const coefficient2 = parseFloat(coefficients.coefficient2).toFixed(2);
+
+        console.log('Коэффициенты:', coefficient1, coefficient2);
 
         document.getElementById('coefficient1').textContent = `${coefficient1}X`;
         document.getElementById('coefficient2').textContent = `- ${coefficient2}X`;
@@ -22,10 +25,13 @@ function updateData(coefficients) {
 
         timeContainer.textContent = `Time: ${currentTimeString}`;
         chanceContainer.textContent = `Chance: ${chance}`;
+    } else {
+        console.error('Коэффициенты не получены');
     }
 }
 
 function fetchCoefficients() {
+    console.log('Запрос коэффициентов...');
     fetch(`${webAppUrl}/get-coefficients`, {
         method: 'POST',
         headers: {
@@ -39,6 +45,7 @@ function fetchCoefficients() {
             return response.json();
         })
         .then(data => {
+            console.log('Коэффициенты получены:', data);
             updateData(data);
             loadingFinished = true;
             loaderBar.style.animation = 'none'; // Остановить анимацию после получения данных
@@ -55,7 +62,9 @@ function fetchCoefficients() {
 getSignalButton.addEventListener('click', () => {
     if (loadingFinished) {
         loadingFinished = false;
-        loaderBar.style.animation = 'loaderAnimation 10s linear'; // Запустить анимацию загрузки
+        loaderBar.style.animation = 'none'; // Остановить текущую анимацию
+        void loaderBar.offsetWidth; // Триггер перерисовки
+        loaderBar.style.animation = 'loadAnimation 10s linear'; // Перезапустить анимацию загрузки
         fetchCoefficients();
     }
 });

@@ -15,6 +15,7 @@ app.post('/get-coefficients', (req, res) => {
     try {
         // Обновить текущие коэффициенты случайными значениями
         currentCoefficients = generateRandomCoefficients();
+        console.log('Отправка коэффициентов:', currentCoefficients);
 
         // Отправить коэффициенты в формате JSON
         res.json({ coefficient1: parseFloat(currentCoefficients.coefficient1), coefficient2: parseFloat(currentCoefficients.coefficient2) });
