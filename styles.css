@@ -20,6 +20,8 @@ body {
 }
 
 .header {
+    display: flex;
+    justify-content: space-between;
     margin-bottom: 20px;
 }
 
@@ -34,6 +36,9 @@ body {
     background-color: #333;
     border-radius: 8px;
     overflow: hidden;
+    background-image: url('path/to/background_image.png'); /* Update with the correct path */
+    background-size: cover;
+    background-position: center;
 }
 
 .coefficients-container {
@@ -46,7 +51,8 @@ body {
 
 .coefficient {
     margin: 0 10px;
-    font-size: 24px;
+    font-size: 36px;
+    font-weight: bold;
 }
 
 .airplane {
@@ -54,7 +60,7 @@ body {
     bottom: 0;
     left: 0;
     transform: translate(0, 0);
-    animation: airplaneAnimation 10s linear infinite; /* Ускорение анимации */
+    animation: airplaneAnimation 10s linear infinite;
     z-index: 0;
 }
 

@@ -4,6 +4,7 @@ const timeContainer = document.getElementById('timeContainer');
 const chanceContainer = document.getElementById('chanceContainer');
 const loaderBar = document.querySelector('.loader-bar');
 const getSignalButton = document.getElementById('getSignalButton');
+const goToGameButton = document.getElementById('goToGameButton');
 const airplane = document.querySelector('.airplane'); // Добавляем самолёт
 
 let loadingFinished = true; // Начальное значение true
@@ -67,4 +68,8 @@ getSignalButton.addEventListener('click', () => {
         loaderBar.style.animation = 'loadAnimation 10s linear'; // Перезапустить анимацию загрузки
         fetchCoefficients();
     }
+});
+
+goToGameButton.addEventListener('click', () => {
+    window.location.href = 'https://example.com/game'; // Убедитесь, что URL правильный
 });
