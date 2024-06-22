@@ -63,3 +63,12 @@ getSignalButton.addEventListener('click', () => {
 goToGameButton.addEventListener('click', () => {
     window.location.href = 'https://your-game-url.com'; // Replace with your game URL
 });
+
+// Function to update time in real-time
+function updateTime() {
+    const currentTime = new Date();
+    timeContainer.textContent = `Time: ${currentTime.toLocaleTimeString()}`;
+}
+
+// Update time every second
+setInterval(updateTime, 1000);
