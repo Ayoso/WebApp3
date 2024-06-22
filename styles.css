@@ -92,7 +92,7 @@ body {
 
 @keyframes airplaneAnimation {
     0% { transform: translate(0, 0); }
-    100% { transform: translate(calc(100% - 50px), calc(-100% - 150px)); }
+    100% { transform: translate(calc(100% - 50px), calc(-100% - 100px)); }
 }
 
 .info-container {
