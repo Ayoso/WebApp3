@@ -7,6 +7,8 @@ const getSignalButton = document.getElementById('getSignalButton');
 const goToGameButton = document.getElementById('goToGameButton');
 const airplane = document.querySelector('.airplane'); // Добавляем самолёт
 
+let loadingFinished = true; // Глобальная переменная для отслеживания состояния загрузки
+
 function updateData(coefficients) {
     console.log('Обновление данных:', coefficients);
     if (coefficients) {
