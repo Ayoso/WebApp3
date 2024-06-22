@@ -11,8 +11,13 @@ let loadingFinished = true; // Initial value set to true
 
 function updateData(coefficients) {
     if (coefficients) {
-        const coefficient1 = parseFloat(coefficients.coefficient1).toFixed(2);
-        const coefficient2 = parseFloat(coefficients.coefficient2).toFixed(2);
+        let coefficient1 = parseFloat(coefficients.coefficient1).toFixed(2);
+        let coefficient2 = parseFloat(coefficients.coefficient2).toFixed(2);
+
+        while (parseFloat(coefficient1) >= parseFloat(coefficient2) || parseFloat(coefficient2) - parseFloat(coefficient1) < 2) {
+            coefficient1 = (Math.random() * 3 + 2).toFixed(2); // Generate random number between 2 and 5
+            coefficient2 = (Math.random() * 3 + 5).toFixed(2); // Generate random number between 5 and 8
+        }
 
         document.getElementById('coefficient1').textContent = `${coefficient1}X`;
         document.getElementById('coefficient2').textContent = `- ${coefficient2}X`;
@@ -53,7 +58,8 @@ getSignalButton.addEventListener('click', () => {
         loadingFinished = false;
         loaderBar.style.animation = 'none'; // Reset animation
         void loaderBar.offsetWidth; // Trigger reflow
-        loaderBar.style.animation = 'loadAnimation 10s linear'; // Start loading animation
+        loaderBar.style.animation = 'load Animation 10s linear';
+         // Start loading animation
         airplane.style.animation = 'none'; // Reset airplane animation
         void airplane.offsetWidth; // Trigger reflow
         airplane.style.animation = 'airplaneAnimation 10s linear'; // Start airplane animation
@@ -66,7 +72,7 @@ getSignalButton.addEventListener('click', () => {
 // Function to update time in real-time
 function updateTime() {
     const currentTime = new Date();
-    timeContainer.textContent = `Time: ${currentTime.toLocaleTimeString()}`;
+    timeContainer.textContent = 'Time: ${currentTime.toLocaleTimeString()}';
 }
 
 // Update time every second
