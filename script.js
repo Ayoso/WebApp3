@@ -1,4 +1,4 @@
-const webAppUrl = 'https://legendary-bombolone-18e5fd.netlify.app'; // Убедитесь, что URL правильный
+const webAppUrl = 'https://legendary-bombolone-18e5fd.netlify.app'; // Использование локального прокси
 
 const timeContainer = document.getElementById('timeContainer');
 const chanceContainer = document.getElementById('chanceContainer');
