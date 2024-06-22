@@ -1,9 +1,9 @@
-const webAppUrl = 'https://legendary-bombolone-18e5fd.netlify.app'; // Обновите порт, если вы изменили его в server.js
+const webAppUrl = 'http://localhost:3002'; // Обновите порт, если вы изменили его в server.js
 
 const coefficientsContainer = document.getElementById('coefficientsContainer');
 const timeContainer = document.getElementById('timeContainer');
 const chanceContainer = document.getElementById('chanceContainer');
-const loaderBar = document.getElementById('loaderBar');
+const loaderBar = document.querySelector('.loader-bar');
 const getSignalButton = document.getElementById('getSignalButton');
 
 let loadingFinished = true; // Initial value set to true

@@ -1,7 +1,7 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: red; /* Black background */
-    color: #fff; /* White text */
+    background-color: #000;
+    color: #fff;
     margin: 0;
     display: flex;
     justify-content: center;
@@ -12,7 +12,7 @@ body {
 .container {
     text-align: center;
     padding: 20px;
-    background-color: #1e1e1e; /* Dark grey background */
+    background-color: #1e1e1e;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     max-width: 400px;
@@ -20,43 +20,33 @@ body {
 }
 
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     margin-bottom: 20px;
 }
 
-.logo, .aviator-logo {
+.logo {
     height: 50px;
 }
 
 .coefficients-wrapper {
     position: relative;
     width: 100%;
-    margin: 0 auto;
     height: 150px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     background-color: #333;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     overflow: hidden;
-    font-size: 24px;
-    color: #fff;
 }
 
 .coefficients-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1; /* Make sure it's in front */
+    height: 100%;
+    z-index: 1;
 }
 
 .coefficient {
     margin: 0 10px;
-    color: white;
-    font-size: large;
+    font-size: 24px;
 }
 
 .airplane {
@@ -65,7 +55,7 @@ body {
     left: 0;
     transform: translateX(0%) translateY(0%);
     animation: airplaneAnimation 25s linear infinite;
-    z-index: 0; /* Make sure it's behind */
+    z-index: 0;
 }
 
 .airplane img {
@@ -112,9 +102,4 @@ body {
 
 .button:hover {
     background-color: #45a049;
-}
-
-@keyframes airplaneAnimation {
-    0% { transform: translateX(0%) translateY(0%); }
-    100% { transform: translateX(100%) translateY(-100%); }
 }
