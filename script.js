@@ -11,7 +11,7 @@ const airplane = document.querySelector('.airplane');
 let loadingFinished = true;
 
 function updateData(coefficients) {
-    console.log('Обновление данgit add .ных:', coefficients);
+    console.log('Обновление данных:', coefficients);
     if (coefficients) {
         const coefficient1 = parseFloat(coefficients.coefficient1).toFixed(2);
         const coefficient2 = parseFloat(coefficients.coefficient2).toFixed(2);
@@ -35,8 +35,7 @@ function updateData(coefficients) {
         timeContainer.textContent = `Time: ${currentTimeString}`;
         chanceContainer.textContent = `Chance: ${chance}`;
 
-        // Обновление времени до следующего сигнала
-        const nextSignalTime = new Date(currentTime.getTime() + 60000); // Следующий сигнал через 1 минуту
+        const nextSignalTime = new Date(currentTime.getTime() + 60000);
         const timeDifference = nextSignalTime - currentTime;
         const minutes = Math.floor(timeDifference / 60000);
         const seconds = ((timeDifference % 60000) / 1000).toFixed(0);
@@ -76,7 +75,6 @@ function fetchCoefficients() {
             console.error('Ошибка при получении коэффициентов:', error);
             loadingFinished = true;
         });
-
 }
 
 getSignalButton.addEventListener('click', () => {

@@ -9,10 +9,16 @@ const PORT = process.env.PORT || 3002;
 app.use(bodyParser.json());
 app.use(cors());
 
-// Сервировка статических файлов из папки public
-app.use(express.static(path.join(__dirname, 'public')));
-
 let currentCoefficients = generateRandomCoefficients();
+
+function generateRandomCoefficients() {
+    let coefficient1, coefficient2;
+    do {
+        coefficient1 = (Math.random() * 2.7 + 2.3).toFixed(2);
+        coefficient2 = (Math.random() * 3.5 + parseFloat(coefficient1) + 1).toFixed(2);
+    } while (parseFloat(coefficient1) >= parseFloat(coefficient2));
+    return { coefficient1, coefficient2 };
+}
 
 app.post('/get-coefficients', (req, res) => {
     try {
@@ -25,16 +31,8 @@ app.post('/get-coefficients', (req, res) => {
     }
 });
 
-function generateRandomCoefficients() {
-    let coefficient1, coefficient2;
-    do {
-        coefficient1 = (Math.random() * 2.7 + 2.3).toFixed(2);
-        coefficient2 = (Math.random() * 3.5 + parseFloat(coefficient1) + 1).toFixed(2);
-    } while (parseFloat(coefficient1) >= parseFloat(coefficient2));
-    return { coefficient1, coefficient2 };
-}
+app.use(express.static(path.join(__dirname, 'public')));
 
-// Отправка index.html для любого GET-запроса
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
