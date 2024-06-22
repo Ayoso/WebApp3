@@ -76,11 +76,7 @@ body {
     overflow: hidden;
     margin-top: 10px;
 }
-.coefficient1{
-    width: 300px;
-    height: 300px;
-    color: white;
-}
+
 .loader-bar {
     width: 0;
     height: 100%;

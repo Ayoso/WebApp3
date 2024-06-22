@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const app = express();
-const PORT = process.env.PORT || 3001; // Измените порт на 3001 или любой другой доступный порт
+const PORT = process.env.PORT || 3002; // Измените порт на 3002 или любой другой доступный порт
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -34,4 +34,6 @@ function generateRandomCoefficients() {
 // Start the server
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
+}).on('error', (err) => {
+    console.error(`Failed to start server on port ${PORT}: ${err.message}`);
 });
