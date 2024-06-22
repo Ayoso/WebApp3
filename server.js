@@ -8,15 +8,15 @@ const PORT = process.env.PORT || 3002;
 
 app.use(bodyParser.json());
 app.use(cors({
-    origin: '*', // Либо укажите точный домен вашего фронтенд приложения
+    origin: '*',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
 app.use(express.static(path.join(__dirname, 'public')));
 
-let currentCoefficients = generateRandomCoefficients(); // Инициализация случайными коэффициентами
+let currentCoefficients = generateRandomCoefficients();
 
-// Эндпоинт для получения коэффициентов
 app.post('/get-coefficients', (req, res) => {
     try {
         currentCoefficients = generateRandomCoefficients();

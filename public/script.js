@@ -7,6 +7,10 @@ const getSignalButton = document.getElementById('getSignalButton');
 const goToGameButton = document.getElementById('goToGameButton');
 const airplane = document.querySelector('.airplane');
 
+if (!timeContainer || !chanceContainer || !loaderBar || !getSignalButton || !goToGameButton || !airplane) {
+    console.error('Один или несколько элементов не найдены на странице.');
+}
+
 let loadingFinished = true;
 
 function updateData(coefficients) {
@@ -70,17 +74,21 @@ function fetchCoefficients() {
         });
 }
 
-getSignalButton.addEventListener('click', () => {
-    console.log('Кнопка GET SIGNAL нажата');
-    if (loadingFinished) {
-        loadingFinished = false;
-        loaderBar.style.animation = 'none';
-        void loaderBar.offsetWidth;
-        loaderBar.style.animation = 'loadAnimation 10s linear';
-        fetchCoefficients();
-    }
-});
+if (getSignalButton) {
+    getSignalButton.addEventListener('click', () => {
+        console.log('Кнопка GET SIGNAL нажата');
+        if (loadingFinished) {
+            loadingFinished = false;
+            loaderBar.style.animation = 'none';
+            void loaderBar.offsetWidth;
+            loaderBar.style.animation = 'loadAnimation 10s linear';
+            fetchCoefficients();
+        }
+    });
+}
 
-goToGameButton.addEventListener('click', () => {
-    window.location.href = 'https://example.com/game';
-});
+if (goToGameButton) {
+    goToGameButton.addEventListener('click', () => {
+        window.location.href = 'https://example.com/game';
+    });
+}
