@@ -17,8 +17,15 @@ function updateData(coefficients) {
 
         console.log('Коэффициенты:', coefficient1, coefficient2);
 
-        document.getElementById('coefficient1').textContent = `${coefficient1}X`;
-        document.getElementById('coefficient2').textContent = `- ${coefficient2}X`;
+        const coefficient1Element = document.getElementById('coefficient1');
+        const coefficient2Element = document.getElementById('coefficient2');
+
+        if (coefficient1Element && coefficient2Element) {
+            coefficient1Element.textContent = `${coefficient1}X`;
+            coefficient2Element.textContent = `- ${coefficient2}X`;
+        } else {
+            console.error('Элементы для отображения коэффициентов не найдены');
+        }
 
         const currentTime = new Date();
         const currentTimeString = currentTime.toLocaleTimeString();

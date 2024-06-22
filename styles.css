@@ -36,7 +36,7 @@ body {
     background-color: #333;
     border-radius: 8px;
     overflow: hidden;
-    background-image: url('path/to/background_image.png'); /* Update with the correct path */
+    background-image: url('https://ultimatecapper.com/wp-content/uploads/2023/07/aviator1.png'); /* Обновите путь к изображению */
     background-size: cover;
     background-position: center;
 }
@@ -53,6 +53,7 @@ body {
     margin: 0 10px;
     font-size: 36px;
     font-weight: bold;
+    color: #fff; /* Убедимся, что текст белый */
 }
 
 .airplane {
