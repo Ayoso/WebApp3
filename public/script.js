@@ -33,7 +33,7 @@ function updateData(coefficients) {
 async function fetchCoefficients() {
     try {
         const response = await fetch(`${webAppUrl}/get-coefficients`, {
-            method: 'POST',
+            method: 'GET', // Измените метод на GET
             headers: {
                 'Content-Type': 'application/json',
             },
