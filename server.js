@@ -26,27 +26,8 @@ app.get('/ping', (req, res) => {
     res.send('pong');
 });
 
-// Добавление обработчика preflight запросов
-app.options('*', cors());
-
 let currentCoefficients = generateRandomCoefficients();
 
-// Обработка GET-запросов для /get-coefficients
-app.get('/get-coefficients', (req, res) => {
-    try {
-        currentCoefficients = generateRandomCoefficients();
-        console.log('Отправка коэффициентов:', currentCoefficients);
-        res.json({
-            coefficient1: parseFloat(currentCoefficients.coefficient1),
-            coefficient2: parseFloat(currentCoefficients.coefficient2)
-        });
-    } catch (error) {
-        console.error('Ошибка при генерации коэффициентов:', error);
-        res.status(500).json({ error: 'Ошибка при генерации коэффициентов' });
-    }
-});
-
-// Обработка POST-запросов для /get-coefficients
 app.post('/get-coefficients', (req, res) => {
     try {
         currentCoefficients = generateRandomCoefficients();
