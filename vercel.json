@@ -1,23 +1,9 @@
 {
   "version": 2,
   "builds": [
-    {
-      "src": "server.js",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "public/**/*",
-      "use": "@vercel/static"
-    }
+    { "src": "server.js", "use": "@vercel/node" }
   ],
   "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "public/$1"
-    },
-    {
-      "src": "/get-coefficients",
-      "dest": "/api/get-coefficients"
-    }
+    { "src": "/(.*)", "dest": "/server.js" }
   ]
 }
