@@ -14,11 +14,10 @@ function updateData(coefficients) {
         const coefficient1 = parseFloat(coefficients.coefficient1).toFixed(2);
         const coefficient2 = parseFloat(coefficients.coefficient2).toFixed(2);
 
-        const coefficientsHTML = `
+        coefficientsContainer.innerHTML = `
             <div class="coefficient">${coefficient1}X</div>
             <div class="coefficient">- ${coefficient2}X</div>
         `;
-        coefficientsContainer.innerHTML = coefficientsHTML;
 
         const currentTime = new Date();
         const endTime = new Date(currentTime.getTime() + 25000);
