@@ -1,94 +1,73 @@
-const webAppUrl = 'https://web-app3-60pmpbo6a-ayosos-projects.vercel.app'; // Замените на ваш URL Vercel
+const webAppUrl = 'https://web-app3-mydpyn9br-ayosos-projects.vercel.app'; // Замените на ваш URL
 
+const coefficientsContainer = document.getElementById('coefficientsContainer');
 const timeContainer = document.getElementById('timeContainer');
 const chanceContainer = document.getElementById('chanceContainer');
 const loaderBar = document.querySelector('.loader-bar');
-const getSignalButton = document.getElementById('getSignalButton');
-const goToGameButton = document.getElementById('goToGameButton');
-const airplane = document.querySelector('.airplane');
+const getSignalButton = document.querySelector('.get-signal-button');
+const goToGameButton = document.querySelector('.go-to-game-button');
 
-if (!timeContainer || !chanceContainer || !loaderBar || !getSignalButton || !goToGameButton || !airplane) {
-    console.error('Один или несколько элементов не найдены на странице.');
-}
-
-let loadingFinished = true;
+let loadingFinished = true; // Устанавливаем начальное значение в true
 
 function updateData(coefficients) {
-    console.log('Обновление данных:', coefficients);
     if (coefficients) {
         const coefficient1 = parseFloat(coefficients.coefficient1).toFixed(2);
         const coefficient2 = parseFloat(coefficients.coefficient2).toFixed(2);
 
-        console.log('Коэффициенты:', coefficient1, coefficient2);
-
-        const coefficient1Element = document.getElementById('coefficient1');
-        const coefficient2Element = document.getElementById('coefficient2');
-
-        if (coefficient1Element && coefficient2Element) {
-            coefficient1Element.textContent = `${coefficient1}X`;
-            coefficient2Element.textContent = `- ${coefficient2}X`;
-        } else {
-            console.error('Элементы для отображения коэффициентов не найдены');
-        }
+        const coefficientsHTML = `
+            <div class="coefficient">${coefficient1}X</div>
+            <div class="coefficient">- ${coefficient2}X</div>
+        `;
+        coefficientsContainer.innerHTML = coefficientsHTML;
 
         const currentTime = new Date();
+        const endTime = new Date(currentTime.getTime() + 25000);
         const currentTimeString = currentTime.toLocaleTimeString();
+        const endTimeString = endTime.toLocaleTimeString();
         const chance = `${Math.floor(Math.random() * 21) + 70}%`;
 
-        timeContainer.textContent = `Time: ${currentTimeString}`;
+        timeContainer.textContent = `Time: ${currentTimeString} - ${endTimeString}`;
         chanceContainer.textContent = `Chance: ${chance}`;
-    } else {
-        console.error('Коэффициенты не получены');
     }
 }
 
-function fetchCoefficients() {
-    console.log('Запрос коэффициентов...');
-    fetch(`${webAppUrl}/get-coefficients`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log('Коэффициенты получены:', data);
-            setTimeout(() => {
-                updateData(data);
-                loaderBar.style.animation = 'none';
-                loaderBar.style.width = '0';
-                airplane.style.animation = 'none';
-                void airplane.offsetWidth;
-                airplane.style.animation = 'airplaneFly 10s linear infinite';
-                loadingFinished = true;
-            }, 10000);
-        })
-        .catch(error => {
-            console.error('Ошибка при получении коэффициентов:', error);
-            loadingFinished = true;
+async function fetchCoefficients() {
+    try {
+        const response = await fetch(`${webAppUrl}/get-coefficients`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            mode: 'cors' // Добавление режима cors
         });
-}
-
-if (getSignalButton) {
-    getSignalButton.addEventListener('click', () => {
-        console.log('Кнопка GET SIGNAL нажата');
-        if (loadingFinished) {
-            loadingFinished = false;
-            loaderBar.style.animation = 'none';
-            void loaderBar.offsetWidth;
-            loaderBar.style.animation = 'loadAnimation 10s linear';
-            fetchCoefficients();
+        if (!response.ok) {
+            console.error(`HTTP error! status: ${response.status}`);
+            return;
         }
-    });
+        const data = await response.json();
+        updateData(data);
+        loadingFinished = true;
+        loaderBar.style.animation = 'none'; // Останавливаем анимацию после получения данных
+        loaderBar.style.width = '0'; // Сбрасываем ширину ползунка
+    } catch (error) {
+        console.error('Ошибка при получении коэффициентов:', error);
+    }
 }
 
-if (goToGameButton) {
-    goToGameButton.addEventListener('click', () => {
-        window.location.href = 'https://example.com/game';
-    });
+function startLoadingAnimation() {
+    loaderBar.style.animation = 'loadAnimation 25s linear'; // Запускаем анимацию загрузки
 }
+
+getSignalButton.addEventListener('click', () => {
+    if (loadingFinished) {
+        loadingFinished = false;
+        startLoadingAnimation();
+        setTimeout(() => {
+            fetchCoefficients().catch(error => console.error(error)); // Обрабатываем обещание
+        }, 25000);
+    }
+});
+
+goToGameButton.addEventListener('click', () => {
+    window.location.href = 'https://web-app3-mydpyn9br-ayosos-projects.vercel.app'; // Замените на URL вашей игры
+});
