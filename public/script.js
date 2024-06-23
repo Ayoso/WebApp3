@@ -33,7 +33,7 @@ function updateData(coefficients) {
 
 function fetchCoefficients() {
     console.log('Запрос коэффициентов...');
-    fetch(`${webAppUrl}/get-coefficients`, {
+    fetch(`${webAppUrl}/https://web-app3-60pmpb06a-ayosos-projects.vercel.app`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
