@@ -1,4 +1,4 @@
-const webAppUrl = 'https://web-app3-60pmpb06a-ayosos-projects.vercel.app'; // Замените на ваш URL
+const webAppUrl = 'web-app3-jq8wwczgz-ayosos-projects.vercel.app'; // Замените на ваш URL
 
 const coefficientsContainer = document.getElementById('coefficientsContainer');
 const timeContainer = document.getElementById('timeContainer');
@@ -33,7 +33,7 @@ function updateData(coefficients) {
 
 function fetchCoefficients() {
     console.log('Запрос коэффициентов...');
-    fetch(`${webAppUrl}/https://web-app3-60pmpb06a-ayosos-projects.vercel.app`, {
+    fetch(`${webAppUrl}/get-coefficients`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
