@@ -26,6 +26,9 @@ app.get('/ping', (req, res) => {
     res.send('pong');
 });
 
+// Добавление обработчика preflight запросов
+app.options('*', cors());
+
 let currentCoefficients = generateRandomCoefficients();
 
 app.post('/get-coefficients', (req, res) => {
