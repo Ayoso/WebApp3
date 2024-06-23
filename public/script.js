@@ -6,6 +6,7 @@ const chanceContainer = document.getElementById('chanceContainer');
 const loaderBar = document.querySelector('.loader-bar');
 const getSignalButton = document.getElementById('getSignalButton');
 const goToGameButton = document.getElementById('goToGameButton');
+const airplane = document.querySelector('.airplane'); // Добавлено для анимации самолета
 
 let loadingFinished = true; // Устанавливаем начальное значение в true
 
@@ -30,43 +31,53 @@ function updateData(coefficients) {
     }
 }
 
-async function fetchCoefficients() {
-    try {
-        const response = await fetch(`${webAppUrl}/get-coefficients`, {
-            method: 'POST', // Проверим POST запрос
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            mode: 'cors' // Добавление режима cors
+function fetchCoefficients() {
+    console.log('Запрос коэффициентов...');
+    fetch(`${webAppUrl}/get-coefficients`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Коэффициенты получены:', data);
+            setTimeout(() => {
+                updateData(data);
+                loaderBar.style.animation = 'none';
+                loaderBar.style.width = '0';
+                airplane.style.animation = 'none';
+                void airplane.offsetWidth;
+                airplane.style.animation = 'airplaneFly 10s linear infinite';
+                loadingFinished = true;
+            }, 10000);
+        })
+        .catch(error => {
+            console.error('Ошибка при получении коэффициентов:', error);
+            loadingFinished = true;
         });
-        if (!response.ok) {
-            console.error(`HTTP error! status: ${response.status}`);
-            return;
+}
+
+if (getSignalButton) {
+    getSignalButton.addEventListener('click', () => {
+        console.log('Кнопка GET SIGNAL нажата');
+        if (loadingFinished) {
+            loadingFinished = false;
+            loaderBar.style.animation = 'none';
+            void loaderBar.offsetWidth;
+            loaderBar.style.animation = 'loadAnimation 10s linear';
+            fetchCoefficients();
         }
-        const data = await response.json();
-        updateData(data);
-        loadingFinished = true;
-        loaderBar.style.animation = 'none'; // Останавливаем анимацию после получения данных
-        loaderBar.style.width = '0'; // Сбрасываем ширину ползунка
-    } catch (error) {
-        console.error('Ошибка при получении коэффициентов:', error);
-    }
+    });
 }
 
-function startLoadingAnimation() {
-    loaderBar.style.animation = 'loadAnimation 25s linear'; // Запускаем анимацию загрузки
+if (goToGameButton) {
+    goToGameButton.addEventListener('click', () => {
+        window.location.href = 'https://example.com/game';
+    });
 }
-
-getSignalButton.addEventListener('click', () => {
-    if (loadingFinished) {
-        loadingFinished = false;
-        startLoadingAnimation();
-        setTimeout(() => {
-            fetchCoefficients().catch(error => console.error(error)); // Обрабатываем обещание
-        }, 25000);
-    }
-});
-
-goToGameButton.addEventListener('click', () => {
-    window.location.href = 'https://web-app3-60pmpb06a-ayosos-projects.vercel.app'; // Замените на URL вашей игры
-});
