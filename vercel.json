@@ -1,19 +1,14 @@
 {
-  "version": 2,
   "builds": [
     {
-      "src": "api/get-coefficients.js",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "public/**/*",
+      "src": "index.html",
       "use": "@vercel/static"
     }
   ],
   "routes": [
     {
-      "src": "/api/get-coefficients",
-      "dest": "/api/get-coefficients.js"
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
   ]
 }
