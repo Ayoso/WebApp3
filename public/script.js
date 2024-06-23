@@ -1,11 +1,11 @@
-const webAppUrl = 'https://web-app3-60pmpbo6a-ayosos-projects.vercel.app/get-coefficients'; // Замените на ваш URL
+const webAppUrl = 'https://web-app3-60pmpb06a-ayosos-projects.vercel.app'; // Замените на ваш URL
 
 const coefficientsContainer = document.getElementById('coefficientsContainer');
 const timeContainer = document.getElementById('timeContainer');
 const chanceContainer = document.getElementById('chanceContainer');
 const loaderBar = document.querySelector('.loader-bar');
-const getSignalButton = document.querySelector('.get-signal-button');
-const goToGameButton = document.querySelector('.go-to-game-button');
+const getSignalButton = document.getElementById('getSignalButton');
+const goToGameButton = document.getElementById('goToGameButton');
 
 let loadingFinished = true; // Устанавливаем начальное значение в true
 
@@ -33,7 +33,7 @@ function updateData(coefficients) {
 async function fetchCoefficients() {
     try {
         const response = await fetch(`${webAppUrl}/get-coefficients`, {
-            method: 'POST',
+            method: 'POST', // Проверим POST запрос
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -68,5 +68,5 @@ getSignalButton.addEventListener('click', () => {
 });
 
 goToGameButton.addEventListener('click', () => {
-    window.location.href = 'https://web-app3-mydpyn9br-ayosos-projects.vercel.app'; // Замените на URL вашей игры
+    window.location.href = 'https://web-app3-60pmpb06a-ayosos-projects.vercel.app'; // Замените на URL вашей игры
 });

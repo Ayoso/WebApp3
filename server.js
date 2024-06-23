@@ -7,11 +7,7 @@ const app = express();
 const PORT = process.env.PORT || 3002;
 
 app.use(bodyParser.json());
-app.use(cors({
-    origin: '*',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization']
-}));
+app.use(cors());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -28,6 +24,22 @@ app.get('/ping', (req, res) => {
 
 let currentCoefficients = generateRandomCoefficients();
 
+// Обработка GET-запросов для /get-coefficients
+app.get('/get-coefficients', (req, res) => {
+    try {
+        currentCoefficients = generateRandomCoefficients();
+        console.log('Отправка коэффициентов:', currentCoefficients);
+        res.json({
+            coefficient1: parseFloat(currentCoefficients.coefficient1),
+            coefficient2: parseFloat(currentCoefficients.coefficient2)
+        });
+    } catch (error) {
+        console.error('Ошибка при генерации коэффициентов:', error);
+        res.status(500).json({ error: 'Ошибка при генерации коэффициентов' });
+    }
+});
+
+// Обработка POST-запросов для /get-coefficients
 app.post('/get-coefficients', (req, res) => {
     try {
         currentCoefficients = generateRandomCoefficients();
